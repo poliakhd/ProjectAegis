@@ -13,5 +13,6 @@ namespace ProjectAegis.Shop
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

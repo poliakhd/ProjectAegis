@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAegis.Shared", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAegis.Shop", "ProjectAegis.Shop\ProjectAegis.Shop.csproj", "{AAFB9757-D81C-4CF6-A2B3-99797629FD0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAegis.Localization", "ProjectAegis.Localization\ProjectAegis.Localization.csproj", "{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AAFB9757-D81C-4CF6-A2B3-99797629FD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAFB9757-D81C-4CF6-A2B3-99797629FD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAFB9757-D81C-4CF6-A2B3-99797629FD0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

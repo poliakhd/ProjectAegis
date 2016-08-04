@@ -59,7 +59,7 @@
             Description = reader.ReadBytes(1024);
             Name = reader.ReadBytes(64).Clear(64);
 
-            if (version == 144)
+            if (version >= 144)
             {
                 GiftId = reader.ReadInt32();
                 GiftAmount = reader.ReadInt32();
@@ -92,7 +92,7 @@
             writer.Write( Description);
             writer.Write( Name);
 
-            if (version == 144)
+            if (version >= 144)
             {
                 writer.Write(GiftId);
                 writer.Write(GiftAmount);

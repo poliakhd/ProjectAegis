@@ -47,10 +47,14 @@
       <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Caliburn.Micro.3.0.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -74,6 +78,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Bootstrapper.cs" />
+    <Compile Include="Resources\Localization\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +113,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Localization\Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Localization\Language.ru.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -110,14 +129,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectAegis.Localization\ProjectAegis.Localization.csproj">
+      <Project>{13355be4-8dec-4b9d-bc6e-8e948976e0ef}</Project>
+      <Name>ProjectAegis.Localization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.csproj">
       <Project>{e14d869d-7c8f-42da-8662-8f1382da593c}</Project>
       <Name>ProjectAegis.Shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
+    <Page Include="Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\add.png" />
+    <Resource Include="Resources\Icons\bullet_wrench.png" />
+    <Resource Include="Resources\Icons\cog_add.png" />
+    <Resource Include="Resources\Icons\delete.png" />
+    <Resource Include="Resources\Icons\disk.png" />
+    <Resource Include="Resources\Icons\disk_multiple.png" />
+    <Resource Include="Resources\Icons\door_in.png" />
+    <Resource Include="Resources\Icons\folder.png" />
+    <Resource Include="Resources\Icons\folder_add.png" />
+    <Resource Include="Resources\Icons\folder_wrench.png" />
+    <Resource Include="Resources\Icons\group.png" />
+    <Resource Include="Resources\Icons\package_go.png" />
+    <Resource Include="Resources\Icons\page_green.png" />
+    <Resource Include="Resources\Icons\pencil_delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
