@@ -1,12 +1,14 @@
 ﻿<Application x:Class="ProjectAegis.Shop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:ProjectAegis.Shop.Core.Converters"
              xmlns:core="clr-namespace:ProjectAegis.Shop.Core">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <core:Bootstrapper x:Key="Bootstrapper" />
+                    <converters:ImageConverter x:Key="ImageConverter" />
                 </ResourceDictionary>
 
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />

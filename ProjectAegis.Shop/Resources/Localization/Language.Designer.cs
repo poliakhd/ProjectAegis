@@ -59,5 +59,311 @@ namespace ProjectAegis.Shop.Resources.Localization {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string AboutText {
+            get {
+                return ResourceManager.GetString("AboutText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add from elements.data.
+        /// </summary>
+        internal static string AddFromElementText {
+            get {
+                return ResourceManager.GetString("AddFromElementText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string AddItemText {
+            get {
+                return ResourceManager.GetString("AddItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string AddSubCategoryText {
+            get {
+                return ResourceManager.GetString("AddSubCategoryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string EditText {
+            get {
+                return ResourceManager.GetString("EditText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string ExitText {
+            get {
+                return ResourceManager.GetString("ExitText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        internal static string FileText {
+            get {
+                return ResourceManager.GetString("FileText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get data from: .
+        /// </summary>
+        internal static string GetDataFromText {
+            get {
+                return ResourceManager.GetString("GetDataFromText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string GiftAmountText {
+            get {
+                return ResourceManager.GetString("GiftAmountText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string GiftIdText {
+            get {
+                return ResourceManager.GetString("GiftIdText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string GiftPriceText {
+            get {
+                return ResourceManager.GetString("GiftPriceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gift.
+        /// </summary>
+        internal static string GiftText {
+            get {
+                return ResourceManager.GetString("GiftText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string GiftTimeText {
+            get {
+                return ResourceManager.GetString("GiftTimeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount.
+        /// </summary>
+        internal static string ItemAmountText {
+            get {
+                return ResourceManager.GetString("ItemAmountText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Icon.
+        /// </summary>
+        internal static string ItemIconText {
+            get {
+                return ResourceManager.GetString("ItemIconText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string ItemIdText {
+            get {
+                return ResourceManager.GetString("ItemIdText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string ItemNameText {
+            get {
+                return ResourceManager.GetString("ItemNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        internal static string MainText {
+            get {
+                return ResourceManager.GetString("MainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string OpenText {
+            get {
+                return ResourceManager.GetString("OpenText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control.
+        /// </summary>
+        internal static string PriceItemControlTypeText {
+            get {
+                return ResourceManager.GetString("PriceItemControlTypeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cost.
+        /// </summary>
+        internal static string PriceItemCostText {
+            get {
+                return ResourceManager.GetString("PriceItemCostText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day.
+        /// </summary>
+        internal static string PriceItemDayText {
+            get {
+                return ResourceManager.GetString("PriceItemDayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string PriceItemDetailsText {
+            get {
+                return ResourceManager.GetString("PriceItemDetailsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string PriceItemDurationText {
+            get {
+                return ResourceManager.GetString("PriceItemDurationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expire.
+        /// </summary>
+        internal static string PriceItemExpireDateText {
+            get {
+                return ResourceManager.GetString("PriceItemExpireDateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flag.
+        /// </summary>
+        internal static string PriceItemFlagText {
+            get {
+                return ResourceManager.GetString("PriceItemFlagText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string PriceItemStartDateText {
+            get {
+                return ResourceManager.GetString("PriceItemStartDateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string PriceItemStatusText {
+            get {
+                return ResourceManager.GetString("PriceItemStatusText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        internal static string PriceItemText {
+            get {
+                return ResourceManager.GetString("PriceItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prices.
+        /// </summary>
+        internal static string PricesText {
+            get {
+                return ResourceManager.GetString("PricesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string RemoveItemText {
+            get {
+                return ResourceManager.GetString("RemoveItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string RemoveSubCategoryText {
+            get {
+                return ResourceManager.GetString("RemoveSubCategoryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as.
+        /// </summary>
+        internal static string SaveAsText {
+            get {
+                return ResourceManager.GetString("SaveAsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string SaveText {
+            get {
+                return ResourceManager.GetString("SaveText", resourceCulture);
+            }
+        }
     }
 }

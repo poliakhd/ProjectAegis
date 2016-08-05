@@ -80,6 +80,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Bootstrapper.cs" />
+    <Compile Include="Core\Converters\ImageConverter.cs" />
+    <Compile Include="Core\Dependencies\RichTextBoxAttached.cs" />
     <Compile Include="Resources\Localization\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,7 +140,6 @@
       <Name>ProjectAegis.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
@@ -160,6 +161,9 @@
     <Resource Include="Resources\Icons\package_go.png" />
     <Resource Include="Resources\Icons\page_green.png" />
     <Resource Include="Resources\Icons\pencil_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\package.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

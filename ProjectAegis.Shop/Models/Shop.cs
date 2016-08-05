@@ -1,4 +1,6 @@
-﻿namespace ProjectAegis.Shop.Models
+﻿using Caliburn.Micro;
+
+namespace ProjectAegis.Shop.Models
 {
     using Shared.Extensions;
     using Shared.Interfaces;
@@ -11,13 +13,13 @@
         public int TimeStamp { get; set; }
         public int AmountItems { get; set; }
 
-        public ObservableCollection<Item> Items { get; set; }
-        public ObservableCollection<Category> Categories { get; set; }
+        public BindableCollection<Item> Items { get; set; }
+        public BindableCollection<Category> Categories { get; set; }
 
         public Shop()
         {
-            Items = new ObservableCollection<Item>();
-            Categories = new ObservableCollection<Category>();
+            Items = new BindableCollection<Item>();
+            Categories = new BindableCollection<Category>();
         }
 
         #region Implementation of IBinaryModel
