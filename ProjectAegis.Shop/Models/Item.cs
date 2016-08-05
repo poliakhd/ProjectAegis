@@ -101,7 +101,17 @@ namespace ProjectAegis.Shop.Models
 
         public Item()
         {
-            Prices = new BindableCollection<Price>();
+            _name = new byte[0];
+            _description = new byte[0];
+            _texture = new byte[0];
+
+            Prices = new BindableCollection<Price>()
+            {
+                new Price(),
+                new Price(),
+                new Price(),
+                new Price()
+            };
         }
 
         public Paragraph BuildColor()
@@ -185,6 +195,7 @@ namespace ProjectAegis.Shop.Models
             ItemId = reader.ReadInt32();
             ItemAmount = reader.ReadInt32();
 
+            Prices.Clear();
             for (int i = 0; i < 4; i++)
                 Prices.Add(reader.ReadModel<Price>(version));
 

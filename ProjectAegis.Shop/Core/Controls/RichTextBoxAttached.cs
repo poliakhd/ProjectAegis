@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 
-namespace ProjectAegis.Shop.Core.Dependencies
+namespace ProjectAegis.Shop.Core.Controls
 {
     public class RichTextBoxAttached
     {

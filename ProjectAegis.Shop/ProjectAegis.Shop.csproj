@@ -81,7 +81,7 @@
     </Compile>
     <Compile Include="Core\Bootstrapper.cs" />
     <Compile Include="Core\Converters\ImageConverter.cs" />
-    <Compile Include="Core\Dependencies\RichTextBoxAttached.cs" />
+    <Compile Include="Core\Controls\RichTextBoxAttached.cs" />
     <Compile Include="Resources\Localization\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
