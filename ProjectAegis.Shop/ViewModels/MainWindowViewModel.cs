@@ -230,7 +230,12 @@ namespace ProjectAegis.Shop.ViewModels
 
         public void AddItem()
         {
-            _items.Add(new Item() {CategoryId = SelectedCategoryIndex, SubCategoryId = SelectedSubCategoryIndex});
+            _items.Add(new Item()
+            {
+                Id = _shop.Items.Max(x => x.Id) + 1,
+                CategoryId = SelectedCategoryIndex,
+                SubCategoryId = SelectedSubCategoryIndex
+            });
 
             NotifyOfPropertyChange(nameof(Items));
         }

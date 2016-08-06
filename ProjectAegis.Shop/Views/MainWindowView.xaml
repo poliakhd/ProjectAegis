@@ -48,21 +48,21 @@
                     </MenuItem.Icon>
                     <MenuItem Name="Version126"
                               cal:Message.Attach="Load(126)"
-                              Header="Версия 1.2.6">
+                              Header="1.2.6">
                         <MenuItem.Icon>
                             <Image Source="../Resources/Icons/bullet_wrench.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="Version142"
                               cal:Message.Attach="Load(142)"
-                              Header="Версия 1.4.2">
+                              Header="1.4.2">
                         <MenuItem.Icon>
                             <Image Source="../Resources/Icons/bullet_wrench.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Name="Version144"
                               cal:Message.Attach="Load(144)"
-                              Header="Версия 1.4.4+">
+                              Header="1.4.4">
                         <MenuItem.Icon>
                             <Image Source="../Resources/Icons/bullet_wrench.png" />
                         </MenuItem.Icon>
@@ -75,7 +75,7 @@
                 </MenuItem>
                 <MenuItem cal:Message.Attach="Save(true)" Header="{localization:Translate SaveAsText}">
                     <MenuItem.Icon>
-                        <Image Source="../Resources/Icons/disk_multiple.png" />
+                        <Image Source="../Resources/Icons/disk.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
@@ -102,7 +102,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid Grid.Row="0" Grid.Column="3">
+        <Grid Grid.Row="0" Margin="3,0" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
