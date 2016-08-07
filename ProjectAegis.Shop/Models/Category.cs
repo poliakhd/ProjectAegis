@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using Caliburn.Micro;
 
@@ -41,6 +42,7 @@ namespace ProjectAegis.Shop.Models
 
         public Category()
         {
+            _name = "NULL".ToBytes("Unicode", 128);
             SubCategories = new BindableCollection<SubCategory>();
         }
 
@@ -48,8 +50,25 @@ namespace ProjectAegis.Shop.Models
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
-            _name = reader.ReadBytes(128).Clear(128);
-            SubCategoriesCount = reader.ReadInt32();
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+            
+            if (fileType == FileType.Client)
+            {
+                _name = reader.ReadBytes(128).Clear(128);
+
+                SubCategoriesCount = reader.ReadInt32();
+            }
 
             if(SubCategoriesCount < 0 || SubCategoriesCount > 1000)
                 throw new FileLoadException();
@@ -60,7 +79,22 @@ namespace ProjectAegis.Shop.Models
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
-            writer.Write(_name);
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+
+            if (fileType == FileType.Client)
+                writer.Write(_name);
+
             writer.Write(SubCategoriesCount);
 
             foreach (var subCategory in SubCategories)

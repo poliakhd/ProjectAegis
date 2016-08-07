@@ -1,4 +1,6 @@
-﻿namespace ProjectAegis.Shop.Models
+﻿using System.Linq;
+
+namespace ProjectAegis.Shop.Models
 {
     using Shared.Extensions;
     using Shared.Interfaces;
@@ -101,9 +103,9 @@
 
         public Item()
         {
-            _name = new byte[0];
-            _description = new byte[0];
-            _texture = new byte[0];
+            _description = "NULL".ToBytes("Unicode", 128);
+            _name = "NULL".ToBytes("Unicode", 128);
+            _texture = "NULL".ToBytes("GBK", 128);
 
             Prices = new BindableCollection<Price>()
             {
@@ -187,12 +189,26 @@
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+            
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+
             Id = reader.ReadInt32();
 
             CategoryId = reader.ReadInt32();
             SubCategoryId = reader.ReadInt32();
 
-            _texture = reader.ReadBytes(128);
+            if (fileType == FileType.Client)
+                _texture = reader.ReadBytes(128);
 
             ItemId = reader.ReadInt32();
             ItemAmount = reader.ReadInt32();
@@ -204,8 +220,11 @@
             if (version == 126)
                 Status = reader.ReadInt32();
 
-            _description = reader.ReadBytes(1024);
-            _name = reader.ReadBytes(64).Clear(64);
+            if (fileType == FileType.Client)
+            {
+                _description = reader.ReadBytes(1024);
+                _name = reader.ReadBytes(64).Clear(64);
+            }
 
             if (version >= 144)
             {
@@ -224,6 +243,19 @@
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+
             writer.Write(Id);
 
             writer.Write(CategoryId);
@@ -242,8 +274,11 @@
                 writer.Write(Status);
             }
 
-            writer.Write(_description);
-            writer.Write(_name);
+            if (fileType == FileType.Client)
+            {
+                writer.Write(_description);
+                writer.Write(_name);
+            }
 
             if (version >= 144)
             {

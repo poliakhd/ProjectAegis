@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using System.Linq;
+using Caliburn.Micro;
 
 namespace ProjectAegis.Shop.Models
 {
@@ -26,6 +27,19 @@ namespace ProjectAegis.Shop.Models
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+
             TimeStamp = reader.ReadInt32();
             AmountItems = reader.ReadInt32();
 
@@ -34,15 +48,44 @@ namespace ProjectAegis.Shop.Models
 
             for (int i = 0; i < 8; i++)
                 Categories.Add(reader.ReadModelWithParameters<Category>(version, parameters));
+
+            if (fileType == FileType.Server)
+            {
+                foreach (var category in Categories)
+                {
+                    int subCategoriesAmount = Items.Where(x => x.CategoryId == Categories.IndexOf(category)).Max(y => y.SubCategoryId);
+
+                    for (int i = 0; i < subCategoriesAmount + 1; i++)
+                    {
+                        category.SubCategories.Add(new SubCategory());
+                    }
+                }
+            }
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
+            var fileType = FileType.Client;
+
+            #region Parameters Checking
+
+            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
+
+            if (fileTypeParam != null)
+            {
+                fileType = (FileType)fileTypeParam;
+            }
+
+            #endregion
+
             writer.Write(TimeStamp);
             writer.Write(Items.Count);
             
             foreach (var item in Items)
                 writer.WriteModelWithParameters(item, version, parameters);
+
+            if(fileType == FileType.Server)
+                return;
 
             foreach (var category in Categories)
                 writer.WriteModelWithParameters(category, version, parameters);

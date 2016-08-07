@@ -42,7 +42,7 @@ namespace ProjectAegis.Shop.ViewModels
             base.DisplayName = "shopeditor";
         }
 
-        public void Load(int version)
+        public void Load(int version, FileType fileType)
         {
             var dialog = new OpenFileDialog()
             {
@@ -59,7 +59,7 @@ namespace ProjectAegis.Shop.ViewModels
                 using (var stream = new FileStream(dialog.FileName, FileMode.Open, FileAccess.Read))
                 using (var reader = new BinaryReader(stream))
                 {
-                    _shop = reader.ReadModel<Models.Shop>(version);
+                    _shop = reader.ReadModelWithParameters<Models.Shop>(version, fileType);
                 }
             }
             catch (Exception ex)
