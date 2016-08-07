@@ -232,6 +232,24 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OwnerNpc.
+        /// </summary>
+        internal static string OwnerNpcsItemText {
+            get {
+                return ResourceManager.GetString("OwnerNpcsItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OwnerNpcs.
+        /// </summary>
+        internal static string OwnerNpcsText {
+            get {
+                return ResourceManager.GetString("OwnerNpcsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control.
         /// </summary>
         internal static string PriceItemControlTypeText {

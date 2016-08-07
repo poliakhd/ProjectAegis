@@ -1,17 +1,16 @@
-﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Documents;
-using System.Windows.Media;
-using Caliburn.Micro;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
     using Shared.Extensions;
     using Shared.Interfaces;
 
+    using System;
     using System.IO;
-    using System.Collections.ObjectModel;
+    using System.Text;
+    using System.Windows.Media;
+    using System.Windows.Documents;
+    using System.Text.RegularExpressions;
+
+    using Caliburn.Micro;
 
     public class Item : PropertyChangedBase, IBinaryModel
     {
@@ -46,6 +45,7 @@ namespace ProjectAegis.Shop.Models
             }
         }
         public string TextureForIcon => Encoding.GetEncoding("GBK").GetString(_texture).Replace("\0", "").Replace(".dds", ".jpg");
+
         public string Description
         {
             get
@@ -67,8 +67,7 @@ namespace ProjectAegis.Shop.Models
                 NotifyOfPropertyChange(nameof(ColorizedDescription));
             }
         }
-
-        public FlowDocument ColorizedDescription => new FlowDocument(BuildColor());
+        public FlowDocument ColorizedDescription => new FlowDocument(BuildColorDocument());
 
         public string Name
         {
@@ -90,7 +89,6 @@ namespace ProjectAegis.Shop.Models
                 NotifyOfPropertyChange();
             }
         }
-        public byte[] Unk { get; set; }
 
         public BindableCollection<Price> Prices { get; set; }
 
@@ -98,6 +96,8 @@ namespace ProjectAegis.Shop.Models
         public int GiftAmount { get; set; }
         public int GiftDuration { get; set; }
         public int LogPrice { get; set; }
+
+        public BindableCollection<int> OwnerNpcs { get; set; }
 
         public Item()
         {
@@ -112,9 +112,11 @@ namespace ProjectAegis.Shop.Models
                 new Price(),
                 new Price()
             };
+
+            OwnerNpcs = new BindableCollection<int>(new int[8]);
         }
 
-        public Paragraph BuildColor()
+        public Paragraph BuildColorDocument()
         {
             var descriptions = Description.Replace("\\r", "\n").Split(new[] {"^"}, StringSplitOptions.None);
 
@@ -183,7 +185,7 @@ namespace ProjectAegis.Shop.Models
 
         #region Implementation of IBinaryModel
 
-        public void ReadModel(BinaryReader reader, int version = 0)
+        public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             Id = reader.ReadInt32();
 
@@ -197,7 +199,7 @@ namespace ProjectAegis.Shop.Models
 
             Prices.Clear();
             for (int i = 0; i < 4; i++)
-                Prices.Add(reader.ReadModel<Price>(version));
+                Prices.Add(reader.ReadModelWithParameters<Price>(version, parameters));
 
             if (version == 126)
                 Status = reader.ReadInt32();
@@ -212,9 +214,15 @@ namespace ProjectAegis.Shop.Models
                 GiftDuration = reader.ReadInt32();
                 LogPrice = reader.ReadInt32();
             }
+
+            if (version >= 152)
+            {
+                for (int i = 0; i < 8; i++)
+                    OwnerNpcs.Add(reader.ReadInt32());
+            }
         }
 
-        public void WriteModel(BinaryWriter writer, int version = 0)
+        public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(Id);
 
@@ -227,11 +235,10 @@ namespace ProjectAegis.Shop.Models
             writer.Write(ItemAmount);
 
             foreach (var price in Prices)
-                writer.WriteModel(price, version);
+                writer.WriteModelWithParameters(price, version, parameters);
 
             if (version == 126)
             {
-                writer.Write(Unk);
                 writer.Write(Status);
             }
 
@@ -244,6 +251,12 @@ namespace ProjectAegis.Shop.Models
                 writer.Write(GiftAmount);
                 writer.Write(GiftDuration);
                 writer.Write(LogPrice);
+            }
+
+            if (version >= 152)
+            {
+                foreach (var ownerNpc in OwnerNpcs)
+                    writer.Write(ownerNpc);
             }
         }
 

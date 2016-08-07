@@ -24,28 +24,28 @@ namespace ProjectAegis.Shop.Models
 
         #region Implementation of IBinaryModel
 
-        public void ReadModel(BinaryReader reader, int version = 0)
+        public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             TimeStamp = reader.ReadInt32();
             AmountItems = reader.ReadInt32();
 
             for (int i = 0; i < AmountItems; i++)
-                Items.Add(reader.ReadModel<Item>(version));
+                Items.Add(reader.ReadModelWithParameters<Item>(version, parameters));
 
             for (int i = 0; i < 8; i++)
-                Categories.Add(reader.ReadModel<Category>(version));
+                Categories.Add(reader.ReadModelWithParameters<Category>(version, parameters));
         }
 
-        public void WriteModel(BinaryWriter writer, int version = 0)
+        public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(TimeStamp);
             writer.Write(Items.Count);
             
             foreach (var item in Items)
-                writer.WriteModel(item, version);
+                writer.WriteModelWithParameters(item, version, parameters);
 
             foreach (var category in Categories)
-                writer.WriteModel(category, version);
+                writer.WriteModelWithParameters(category, version, parameters);
         }
 
         #endregion

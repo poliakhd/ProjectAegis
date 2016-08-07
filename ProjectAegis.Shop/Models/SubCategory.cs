@@ -37,12 +37,12 @@ namespace ProjectAegis.Shop.Models
 
         #region Implementation of IBinaryModel
 
-        public void ReadModel(BinaryReader reader, int version = 0)
+        public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             _name = reader.ReadBytes(128).Clear(128);
         }
 
-        public void WriteModel(BinaryWriter writer, int version = 0)
+        public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(_name);
         }

@@ -89,7 +89,7 @@
 
         #region Implementation of IBinaryModel
 
-        public void ReadModel(BinaryReader reader, int version = 0)
+        public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             _cost = reader.ReadInt32();
             _expireDate = reader.ReadInt32();
@@ -105,7 +105,7 @@
             }
         }
 
-        public void WriteModel(BinaryWriter writer, int version = 0)
+        public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(_cost);
             writer.Write(_expireDate);

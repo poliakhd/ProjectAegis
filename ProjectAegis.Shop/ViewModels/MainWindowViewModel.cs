@@ -28,6 +28,15 @@ namespace ProjectAegis.Shop.ViewModels
 
         #endregion
 
+        public int Version { get; set; }
+
+        #region SectionsAvailability
+
+        public bool GiftSectionAvailability => Version >= 144;
+        public bool OwnerNpcsSectionAvailability => Version >= 152;
+
+        #endregion
+
         public MainWindowViewModel()
         {
             base.DisplayName = "shopeditor";
@@ -42,7 +51,7 @@ namespace ProjectAegis.Shop.ViewModels
             };
 
             var result = dialog.ShowDialog();
-            if (result != null && !(bool) result)
+            if (result != null && !(bool)result)
                 return;
 
             try
@@ -61,6 +70,11 @@ namespace ProjectAegis.Shop.ViewModels
             NotifyOfPropertyChange(()=>Categories);
             NotifyOfPropertyChange(()=>SubCategories);
             NotifyOfPropertyChange(()=>Items);
+
+            Version = version;
+
+            NotifyOfPropertyChange(nameof(GiftSectionAvailability));
+            NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
         }
         public void Save()
         {
@@ -220,6 +234,7 @@ namespace ProjectAegis.Shop.ViewModels
                 _selectedItem = value; 
                 NotifyOfPropertyChange();
                 NotifyOfPropertyChange(nameof(Prices));
+                NotifyOfPropertyChange(nameof(OwnerNpcs));
             }
         }
         public BindableCollection<Item> Items
@@ -265,6 +280,20 @@ namespace ProjectAegis.Shop.ViewModels
             set
             {
                 _selectedItem.Prices = value; 
+                NotifyOfPropertyChange();
+            }
+        }
+
+        #endregion
+
+        #region OwnerNpcs
+
+        public BindableCollection<int> OwnerNpcs
+        {
+            get { return _selectedItem?.OwnerNpcs; }
+            set
+            {
+                _selectedItem.OwnerNpcs = value;
                 NotifyOfPropertyChange();
             }
         }

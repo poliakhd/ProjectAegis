@@ -46,7 +46,7 @@ namespace ProjectAegis.Shop.Models
 
         #region Implementation of IBinaryModel
 
-        public void ReadModel(BinaryReader reader, int version = 0)
+        public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             _name = reader.ReadBytes(128).Clear(128);
             SubCategoriesCount = reader.ReadInt32();
@@ -55,16 +55,16 @@ namespace ProjectAegis.Shop.Models
                 throw new FileLoadException();
 
             for (int j = 0; j < SubCategoriesCount; j++)
-                SubCategories.Add(reader.ReadModel<SubCategory>(version));
+                SubCategories.Add(reader.ReadModelWithParameters<SubCategory>(version, parameters));
         }
 
-        public void WriteModel(BinaryWriter writer, int version = 0)
+        public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(_name);
             writer.Write(SubCategoriesCount);
 
             foreach (var subCategory in SubCategories)
-                writer.WriteModel(subCategory, version);
+                writer.WriteModelWithParameters(subCategory, version, parameters);
         }
 
         #endregion
