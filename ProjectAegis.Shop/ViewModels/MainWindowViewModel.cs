@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using Caliburn.Micro;
 using Microsoft.Win32;
+using ProjectAegis.Localization.Managers;
 using ProjectAegis.Shared.Extensions;
 using ProjectAegis.Shop.Models;
+using ProjectAegis.Shop.Models.Core;
 
 namespace ProjectAegis.Shop.ViewModels
 {
@@ -25,6 +28,8 @@ namespace ProjectAegis.Shop.ViewModels
         private BindableCollection<Item> _items;
         private Item _selectedItem;
         private Price _selectedPrice;
+        private IEnumerable<string> Trans;
+        private CultureInfo _currentLanguage;
 
         #endregion
 
@@ -40,7 +45,29 @@ namespace ProjectAegis.Shop.ViewModels
         public MainWindowViewModel()
         {
             base.DisplayName = "shopeditor";
+
+            _currentLanguage = TranslationManager.Instance.CurrentLanguage;
+           
+            NotifyOfPropertyChange(nameof(CurrentLanguage));
+            NotifyOfPropertyChange(nameof(Languages));
         }
+
+        #region Language
+
+        public IEnumerable<CultureInfo> Languages => TranslationManager.Instance.Languages;
+        public CultureInfo CurrentLanguage
+        {
+            get { return _currentLanguage; }
+            set
+            {
+                TranslationManager.Instance.CurrentLanguage = value;
+                _currentLanguage = value;
+
+                NotifyOfPropertyChange();
+            }
+        }
+
+        #endregion
 
         public void Load(int version, FileType fileType)
         {

@@ -10,13 +10,27 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 Width="1075"
                 Height="572.583"
-                mc:Ignorable="d">
+                mc:Ignorable="d" Icon="../Resources/Icons/Icon.ico">
 
-    <Window.Resources>
-        <Style TargetType="TextBox">
-            <Setter Property="Height" Value="23" />
-        </Style>
-    </Window.Resources>
+    <ma:MetroWindow.RightWindowCommands>
+        <ma:WindowCommands>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{localization:Translate LanguageText}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <ComboBox Width="185" ItemsSource="{Binding Path=Languages, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=CurrentLanguage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsSynchronizedWithCurrentItem="True">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="15" Margin="0,0,5,0" Source="../Resources/Icons/style_go.png" />
+                                <TextBlock Margin="3"
+                                           Foreground="Black"
+                                           Text="{Binding NativeName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+        </ma:WindowCommands>
+    </ma:MetroWindow.RightWindowCommands>
 
     <Grid Name="LayoutRoot">
         <Grid.RowDefinitions>

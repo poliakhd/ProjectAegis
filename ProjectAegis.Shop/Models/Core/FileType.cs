@@ -1,4 +1,4 @@
-﻿namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models.Core
 {
     public enum FileType
     {

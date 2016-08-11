@@ -214,6 +214,15 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        internal static string LanguageText {
+            get {
+                return ResourceManager.GetString("LanguageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main.
         /// </summary>
         internal static string MainText {

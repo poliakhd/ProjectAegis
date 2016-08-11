@@ -17,5 +17,11 @@ namespace ProjectAegis.Shared.Extensions
 
             return target;
         }
+
+        public static int ToTimestamp(this string date)
+        {
+            var dt = DateTime.Parse(date);
+            return Convert.ToInt32(dt.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
+        }
     }
 }

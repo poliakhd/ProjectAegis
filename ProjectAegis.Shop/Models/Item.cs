@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using ProjectAegis.Shop.Models.Core;
 
 namespace ProjectAegis.Shop.Models
 {

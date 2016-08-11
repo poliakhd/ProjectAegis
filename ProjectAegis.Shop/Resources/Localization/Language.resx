@@ -168,6 +168,9 @@
   <data name="ItemNameText" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="LanguageText" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="MainText" xml:space="preserve">
     <value>Main</value>
   </data>

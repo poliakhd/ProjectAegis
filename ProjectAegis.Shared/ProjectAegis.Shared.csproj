@@ -47,6 +47,7 @@
     <Compile Include="Extensions\BinaryExtensions.cs" />
     <Compile Include="Extensions\ByteExtensions.cs" />
     <Compile Include="Extensions\CollectionsExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IBinaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

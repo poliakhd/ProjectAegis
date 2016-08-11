@@ -31,7 +31,8 @@
         {
             get
             {
-                yield return new CultureInfo("en");
+                yield return new CultureInfo("en-US");
+                yield return new CultureInfo("ru-RU");
             }
         }
 

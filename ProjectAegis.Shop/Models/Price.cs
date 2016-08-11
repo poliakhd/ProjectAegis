@@ -1,4 +1,6 @@
-﻿namespace ProjectAegis.Shop.Models
+﻿using ProjectAegis.Shared.Extensions;
+
+namespace ProjectAegis.Shop.Models
 {
     using Shared.Interfaces;
 
@@ -24,61 +26,46 @@
         }
         public string ExpireDate
         {
-            get
-            {
-                var dt = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                dt = dt.AddSeconds(_expireDate);
-                return dt.ToString("yyyy-MM-dd HH:mm:ss");
-            }
+            get { return _expireDate.ToDate("yyyy-MM-dd HH:mm:ss"); }
             set
             {
                 try
                 {
-                    var dt = DateTime.Parse(value);
-                    _expireDate = Convert.ToInt32(dt.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
+                    _expireDate = value.ToTimestamp();
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }
         public string Duration
         {
-            get
-            {
-                var dt = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                dt = dt.AddSeconds(_duration);
-                return dt.ToString("yyyy-MM-dd HH:mm:ss");
-            }
+            get { return _duration.ToDate("yyyy-MM-dd HH:mm:ss"); }
             set
             {
                 try
                 {
-                    var dt = DateTime.Parse(value);
-                    _duration = Convert.ToInt32(dt.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
+                    _duration = value.ToTimestamp();
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }
         public string StartDate
         {
-            get
-            {
-                var dt = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                dt = dt.AddSeconds(_startDate);
-                return dt.ToString("yyyy-MM-dd HH:mm:ss");
-            }
+            get { return _startDate.ToDate("yyyy-MM-dd HH:mm:ss"); }
             set
             {
                 try
                 {
-                    var dt = DateTime.Parse(value);
-                    _startDate = Convert.ToInt32(dt.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
+                    _startDate = value.ToTimestamp();
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Caliburn.Micro;
+using ProjectAegis.Shop.Models.Core;
 
 namespace ProjectAegis.Shop.Models
 {

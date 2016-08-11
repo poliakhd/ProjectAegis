@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using Caliburn.Micro;
+using ProjectAegis.Shop.Models.Core;
 
 namespace ProjectAegis.Shop.Models
 {

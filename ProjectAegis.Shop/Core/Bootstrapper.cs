@@ -13,12 +13,11 @@
     {
         public Bootstrapper()
         {
-            TranslationManager.Instance.TranslationProvider =
-                new ResxTranslationProvider("ProjectAegis.Shop.Resources.Localization.Language",
-                    Assembly.GetExecutingAssembly());
-
             Initialize();
+            InitializeLocalization();
         }
+
+
 
         #region Overrides of BootstrapperBase
 
@@ -28,5 +27,14 @@
         }
 
         #endregion
+
+        private void InitializeLocalization()
+        {
+            TranslationManager.Instance.TranslationProvider =
+                new ResxTranslationProvider(
+                    "ProjectAegis.Shop.Resources.Localization.Language",
+                    Assembly.GetExecutingAssembly()
+                );
+        }
     }
 }
