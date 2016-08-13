@@ -28,29 +28,12 @@ namespace ProjectAegis.Shop.ViewModels
         private BindableCollection<Item> _items;
         private Item _selectedItem;
         private Price _selectedPrice;
-        private IEnumerable<string> Trans;
         private CultureInfo _currentLanguage;
 
         #endregion
 
         public int Version { get; set; }
 
-        #region SectionsAvailability
-
-        public bool GiftSectionAvailability => Version >= 144;
-        public bool OwnerNpcsSectionAvailability => Version >= 152;
-
-        #endregion
-
-        public MainWindowViewModel()
-        {
-            base.DisplayName = "shopeditor";
-
-            _currentLanguage = TranslationManager.Instance.CurrentLanguage;
-           
-            NotifyOfPropertyChange(nameof(CurrentLanguage));
-            NotifyOfPropertyChange(nameof(Languages));
-        }
 
         #region Language
 
@@ -68,6 +51,23 @@ namespace ProjectAegis.Shop.ViewModels
         }
 
         #endregion
+
+        #region SectionsAvailability
+
+        public bool GiftSectionAvailability => Version >= 144;
+        public bool OwnerNpcsSectionAvailability => Version >= 152;
+
+        #endregion
+
+        public MainWindowViewModel()
+        {
+            base.DisplayName = "shopeditor";
+
+            _currentLanguage = TranslationManager.Instance.CurrentLanguage;
+           
+            NotifyOfPropertyChange(nameof(CurrentLanguage));
+            NotifyOfPropertyChange(nameof(Languages));
+        }
 
         public void Load(int version, FileType fileType)
         {
