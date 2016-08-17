@@ -95,9 +95,9 @@ namespace ProjectAegis.Shop.ViewModels
                 MessageBox.Show(ex.Message);
             }
 
-            NotifyOfPropertyChange(()=>Categories);
-            NotifyOfPropertyChange(()=>SubCategories);
-            NotifyOfPropertyChange(()=>Items);
+            NotifyOfPropertyChange(nameof(Categories));
+            NotifyOfPropertyChange(nameof(SubCategories));
+            NotifyOfPropertyChange(nameof(Items));
 
             Version = version;
             FileType = fileType;
@@ -105,6 +105,7 @@ namespace ProjectAegis.Shop.ViewModels
             NotifyOfPropertyChange(nameof(GiftSectionAvailability));
             NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
         }
+
         public void Save()
         {
             var dialog = new SaveFileDialog()
@@ -130,7 +131,46 @@ namespace ProjectAegis.Shop.ViewModels
                 MessageBox.Show(ex.Message);
             }
         }
+        public void Save(int version, FileType fileType)
+        {
+            var dialog = new SaveFileDialog()
+            {
+                FileName = "gshop.data",
+                Filter = "gshop.data|*.data|All files|*.*"
+            };
 
+            var result = dialog.ShowDialog();
+            if (result != null && !(bool)result)
+                return;
+
+            try
+            {
+                using (var stream = new FileStream(dialog.FileName, FileMode.Create, FileAccess.Write))
+                using (var reader = new BinaryWriter(stream))
+                {
+                    reader.WriteModelWithParameters(_shop, version, fileType);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Unload()
+        {
+            _shop = new Models.Shop();
+
+            NotifyOfPropertyChange(nameof(Categories));
+            NotifyOfPropertyChange(nameof(SubCategories));
+            NotifyOfPropertyChange(nameof(Items));
+
+            Version = -1;
+            FileType = FileType.Client;
+
+            NotifyOfPropertyChange(nameof(GiftSectionAvailability));
+            NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
+        }
 
         public void Exit()
         {
@@ -215,7 +255,10 @@ namespace ProjectAegis.Shop.ViewModels
 
         public void AddSubCategory()
         {
+            if(_subCategories.Count < 8)
+                _subCategories.Add(new SubCategory());
 
+            NotifyOfPropertyChange(nameof(SubCategories));
         }
         public void RemoveSubCategories(IList list)
         {

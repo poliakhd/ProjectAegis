@@ -392,5 +392,14 @@ namespace ProjectAegis.Shop.Resources.Localization {
                 return ResourceManager.GetString("SaveText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unload file.
+        /// </summary>
+        internal static string UnloadFile {
+            get {
+                return ResourceManager.GetString("UnloadFile", resourceCulture);
+            }
+        }
     }
 }

@@ -228,4 +228,7 @@
   <data name="SaveText" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="UnloadFile" xml:space="preserve">
+    <value>Выгрузить файл</value>
+  </data>
 </root>

@@ -8,7 +8,7 @@
                 xmlns:localization="clr-namespace:ProjectAegis.Localization;assembly=ProjectAegis.Localization"
                 xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                Width="888.917"
+                Width="960.917"
                 Height="584"
                 Icon="../Resources/Icons/Icon.ico"
                 mc:Ignorable="d">
@@ -124,10 +124,58 @@
                         <Image Source="../Resources/Icons/disk.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem cal:Message.Attach="Save(true)" Header="{localization:Translate SaveAsText}">
+                <MenuItem Header="{localization:Translate SaveAsText}">
                     <MenuItem.Icon>
                         <Image Source="../Resources/Icons/disk.png" />
                     </MenuItem.Icon>
+
+                    <MenuItem Header="Client">
+                        <MenuItem.Icon>
+                            <Image Source="../Resources/Icons/wrench_orange.png" />
+                        </MenuItem.Icon>
+                        <MenuItem cal:Message.Attach="Save(126, 1)" Header="1.2.6">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(142, 1)" Header="1.4.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(144, 1)" Header="1.4.4">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(152, 1)" Header="1.5.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+
+                    <MenuItem Header="Server">
+                        <MenuItem.Icon>
+                            <Image Source="../Resources/Icons/wrench_orange.png" />
+                        </MenuItem.Icon>
+
+                        <MenuItem cal:Message.Attach="Save(142, 2)" Header="1.4.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(144, 2)" Header="1.4.4">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(152, 2)" Header="1.5.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
                 </MenuItem>
                 <Separator />
                 <MenuItem cal:Message.Attach="Exit()" Header="{localization:Translate ExitText}">
@@ -140,6 +188,11 @@
                 <MenuItem.Icon>
                     <Image Source="../Resources/Icons/folder_wrench.png" />
                 </MenuItem.Icon>
+                <MenuItem cal:Message.Attach="Unload()" Header="{localization:Translate UnloadFile}">
+                    <MenuItem.Icon>
+                        <Image Source="../Resources/Icons/bullet_wrench.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="{localization:Translate AddFromElementText}">
                     <MenuItem.Icon>
                         <Image Source="../Resources/Icons/bullet_wrench.png" />
