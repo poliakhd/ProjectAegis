@@ -9,7 +9,7 @@
                 xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 Width="888.917"
-                Height="572.583"
+                Height="584"
                 Icon="../Resources/Icons/Icon.ico"
                 mc:Ignorable="d">
 
@@ -119,7 +119,7 @@
                     </MenuItem>
                 </MenuItem>
 
-                <MenuItem cal:Message.Attach="Save(false)" Header="{localization:Translate SaveText}">
+                <MenuItem cal:Message.Attach="Save()" Header="{localization:Translate SaveText}">
                     <MenuItem.Icon>
                         <Image Source="../Resources/Icons/disk.png" />
                     </MenuItem.Icon>

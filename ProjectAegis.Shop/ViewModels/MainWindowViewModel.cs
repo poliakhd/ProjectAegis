@@ -34,6 +34,7 @@ namespace ProjectAegis.Shop.ViewModels
 
         public int Version { get; set; }
 
+        public FileType FileType { get; set; }
 
         #region Language
 
@@ -99,14 +100,38 @@ namespace ProjectAegis.Shop.ViewModels
             NotifyOfPropertyChange(()=>Items);
 
             Version = version;
+            FileType = fileType;
 
             NotifyOfPropertyChange(nameof(GiftSectionAvailability));
             NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
         }
         public void Save()
         {
+            var dialog = new SaveFileDialog()
+            {
+                FileName = "gshop.data",
+                Filter = "gshop.data|*.data|All files|*.*"
+            };
 
+            var result = dialog.ShowDialog();
+            if (result != null && !(bool)result)
+                return;
+
+            try
+            {
+                using (var stream = new FileStream(dialog.FileName, FileMode.Create, FileAccess.Write))
+                using (var reader = new BinaryWriter(stream))
+                {
+                    reader.WriteModelWithParameters(_shop, Version, FileType);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+
         public void Exit()
         {
             base.TryClose();

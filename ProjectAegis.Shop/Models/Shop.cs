@@ -28,16 +28,9 @@ namespace ProjectAegis.Shop.Models
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
-            var fileType = FileType.Client;
+            #region Parameters
 
-            #region Parameters Checking
-
-            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
-
-            if (fileTypeParam != null)
-            {
-                fileType = (FileType)fileTypeParam;
-            }
+            var fileType = parameters.GetParameter<FileType>(FileType.Client);
 
             #endregion
 
@@ -66,16 +59,9 @@ namespace ProjectAegis.Shop.Models
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
-            var fileType = FileType.Client;
+            #region Parameters
 
-            #region Parameters Checking
-
-            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
-
-            if (fileTypeParam != null)
-            {
-                fileType = (FileType)fileTypeParam;
-            }
+            var fileType = parameters.GetParameter<FileType>(FileType.Client);
 
             #endregion
 

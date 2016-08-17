@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ProjectAegis.Shop.Models.Core;
+﻿using ProjectAegis.Shop.Models.Core;
 
 namespace ProjectAegis.Shop.Models
 {
@@ -190,16 +189,9 @@ namespace ProjectAegis.Shop.Models
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
-            var fileType = FileType.Client;
+            #region Parameters
 
-            #region Parameters Checking
-
-            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
-            
-            if (fileTypeParam != null)
-            {
-                fileType = (FileType)fileTypeParam;
-            }
+            var fileType = parameters.GetParameter<FileType>(FileType.Client);
 
             #endregion
 
@@ -237,6 +229,7 @@ namespace ProjectAegis.Shop.Models
 
             if (version >= 152)
             {
+                OwnerNpcs.Clear();
                 for (int i = 0; i < 8; i++)
                     OwnerNpcs.Add(reader.ReadInt32());
             }
@@ -244,16 +237,9 @@ namespace ProjectAegis.Shop.Models
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
-            var fileType = FileType.Client;
+            #region Parameters
 
-            #region Parameters Checking
-
-            var fileTypeParam = parameters.FirstOrDefault(x => x is FileType);
-
-            if (fileTypeParam != null)
-            {
-                fileType = (FileType)fileTypeParam;
-            }
+            var fileType = parameters.GetParameter<FileType>(FileType.Client);
 
             #endregion
 
@@ -262,7 +248,8 @@ namespace ProjectAegis.Shop.Models
             writer.Write(CategoryId);
             writer.Write(SubCategoryId);
 
-            writer.Write(_texture);
+            if(fileType == FileType.Client)
+                writer.Write(_texture);
 
             writer.Write(ItemId);
             writer.Write(ItemAmount);
@@ -271,9 +258,7 @@ namespace ProjectAegis.Shop.Models
                 writer.WriteModelWithParameters(price, version, parameters);
 
             if (version == 126)
-            {
                 writer.Write(Status);
-            }
 
             if (fileType == FileType.Client)
             {
