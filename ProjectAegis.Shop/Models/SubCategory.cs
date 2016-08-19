@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using ProjectAegis.Shop.Models.Core;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
+    using System.IO;
+    using System;
+    using System.Text;
+
+    using Caliburn.Micro;
+
+    using Base;
+
     using Shared.Extensions;
     using Shared.Interfaces;
-
-    using System.IO;
 
     public class SubCategory : PropertyChangedBase, IBinaryModel
     {

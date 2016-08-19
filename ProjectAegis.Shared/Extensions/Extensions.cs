@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Caliburn.Micro;
 using ProjectAegis.Shared.Interfaces;
+using ProjectAegis.Virtualization;
 
 namespace ProjectAegis.Shared.Extensions
 {

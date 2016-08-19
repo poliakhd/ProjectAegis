@@ -193,7 +193,10 @@
                         <Image Source="../Resources/Icons/bullet_wrench.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="{localization:Translate AddFromElementText}">
+                <MenuItem cal:Message.Attach="AddItems()"
+                          Header="{localization:Translate AddFromElementText}"
+                          IsEnabled="{Binding Path=AddItemsAvalaibility,
+                                              UpdateSourceTrigger=PropertyChanged}">
                     <MenuItem.Icon>
                         <Image Source="../Resources/Icons/bullet_wrench.png" />
                     </MenuItem.Icon>
@@ -444,7 +447,7 @@
 
                         <Grid VerticalAlignment="Center" DataContext="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*" />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
@@ -524,7 +527,6 @@
                             </Grid>
 
                             <Border Grid.Column="1"
-                                    
                                     Height="110"
                                     Margin="1"
                                     Background="Black"
@@ -535,7 +537,10 @@
 
                         </Grid>
 
-                        <Grid Margin="0,2,0,0" Grid.Row="1" DataContext="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+                        <Grid Grid.Row="1"
+                              Margin="0,2,0,0"
+                              DataContext="{Binding Path=SelectedItem,
+                                                    UpdateSourceTrigger=PropertyChanged}">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -555,7 +560,6 @@
                             <RichTextBox Name="ColorDescription"
                                          Grid.Column="1"
                                          Height="135"
-                                         
                                          controls:RichTextBoxAttached.BindableDocument="{Binding Path=ColorizedDescription}"
                                          Background="Black"
                                          BorderBrush="#FFABADB3" />
@@ -568,7 +572,8 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
-                            <Expander Grid.Column="0" Margin="0,0,2,0"
+                            <Expander Grid.Column="0"
+                                      Margin="0,0,2,0"
                                       BorderBrush="#FFABADB3"
                                       BorderThickness="1"
                                       Header="{localization:Translate GiftText}"
@@ -635,7 +640,7 @@
                                                             Mode=TwoWay}" />
                                 </Grid>
                             </Expander>
-                            <Expander x:Name="OwnerNpcsSection" 
+                            <Expander x:Name="OwnerNpcsSection"
                                       Grid.Column="1"
                                       Header="{localization:Translate OwnerNpcsText}"
                                       IsEnabled="{Binding Path=OwnerNpcsSectionAvailability,

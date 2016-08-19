@@ -1,11 +1,10 @@
-﻿using ProjectAegis.Shared.Extensions;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
-    using Shared.Interfaces;
-
     using System;
     using System.IO;
+
+    using Shared.Extensions;
+    using Shared.Interfaces;
 
     public class Price : IBinaryModel
     {

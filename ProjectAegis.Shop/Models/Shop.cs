@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using Caliburn.Micro;
-using ProjectAegis.Shop.Models.Core;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
+    using System.IO;
+    using System.Linq;
+
+    using Caliburn.Micro;
+
+    using Base;
+
     using Shared.Extensions;
     using Shared.Interfaces;
-
-    using System.IO;
-    using System.Collections.ObjectModel;
 
     public class Shop : IBinaryModel
     {

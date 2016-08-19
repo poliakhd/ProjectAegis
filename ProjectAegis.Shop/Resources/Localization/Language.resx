@@ -123,6 +123,9 @@
   <data name="AddFromElementText" xml:space="preserve">
     <value>Add from elements.data</value>
   </data>
+  <data name="AddItemsToCategoryText" xml:space="preserve">
+    <value>Add items to...</value>
+  </data>
   <data name="AddItemText" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="MainText" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="OpenElementsDataText" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="OpenText" xml:space="preserve">
     <value>Open</value>
@@ -228,7 +234,19 @@
   <data name="SaveText" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SelectCategoriesText" xml:space="preserve">
+    <value>Select</value>
+  </data>
   <data name="UnloadFile" xml:space="preserve">
     <value>Unload file</value>
+  </data>
+  <data name="AddItemsWindowHeaderText" xml:space="preserve">
+    <value>Add items</value>
+  </data>
+  <data name="MainWindowHeaderText" xml:space="preserve">
+    <value>ShopEditor</value>
+  </data>
+  <data name="SelectCategoryHeaderText" xml:space="preserve">
+    <value>Select category</value>
   </data>
 </root>

@@ -1,0 +1,80 @@
+﻿<ma:MetroWindow x:Class="ProjectAegis.Shop.Views.AddItemsWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ProjectAegis.Shop.Models"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:localization="clr-namespace:ProjectAegis.Localization;assembly=ProjectAegis.Localization"
+        mc:Ignorable="d"
+        Title="AddItemsWindowView" Height="400" Width="600" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Margin="3" Background="Transparent">
+            <MenuItem Header="{localization:Translate OpenElementsDataText}" cal:Message.Attach="Load()">
+                <MenuItem.Icon>
+                    <Image VerticalAlignment="Top" Source="../Resources/Icons/folder.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+
+        <ListView x:Name="Lists" Grid.Row="1" Grid.Column="0" Margin="3" MinWidth="275">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Margin="1,1,7,1" Source="../Resources/Icons/package.png"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=Name}"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="Elements" Grid.Row="1" Grid.Column="1" Margin="3" Style="{DynamicResource VirtualisedMetroListView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Margin="1,1,7,1" Source="../Resources/Icons/package.png"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Path=Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{localization:Translate AddItemsToCategoryText}">
+                        <MenuItem.Icon>
+                            <Image Source="../Resources/Icons/add.png"/>
+                        </MenuItem.Icon>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <cal:ActionMessage MethodName="AddItemsToCategory">
+                                    <cal:Parameter Value="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItems, UpdateSourceTrigger=PropertyChanged}" />
+                                </cal:ActionMessage>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+    </Grid>
+</ma:MetroWindow>

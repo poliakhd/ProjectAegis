@@ -1,10 +1,5 @@
-﻿using ProjectAegis.Shop.Models.Core;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
-    using Shared.Extensions;
-    using Shared.Interfaces;
-
     using System;
     using System.IO;
     using System.Text;
@@ -13,6 +8,11 @@ namespace ProjectAegis.Shop.Models
     using System.Text.RegularExpressions;
 
     using Caliburn.Micro;
+
+    using Base;
+
+    using Shared.Extensions;
+    using Shared.Interfaces;
 
     public class Item : PropertyChangedBase, IBinaryModel
     {

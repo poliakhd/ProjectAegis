@@ -82,15 +82,25 @@
     <Compile Include="Core\Bootstrapper.cs" />
     <Compile Include="Core\Converters\ImageConverter.cs" />
     <Compile Include="Core\Controls\RichTextBoxAttached.cs" />
-    <Compile Include="Models\Core\FileType.cs" />
+    <Compile Include="Models\Base\FileType.cs" />
+    <Compile Include="Models\Elements.cs" />
+    <Compile Include="Models\Messages\AddItemsMessage.cs" />
     <Compile Include="Resources\Localization\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Language.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddItemsWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\SelectCategoryWindowViewModel.cs" />
+    <Compile Include="Views\AddItemsWindowView.xaml.cs">
+      <DependentUpon>AddItemsWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectCategoryWindowView.xaml.cs">
+      <DependentUpon>SelectCategoryWindowView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -140,9 +150,21 @@
       <Project>{e14d869d-7c8f-42da-8662-8f1382da593c}</Project>
       <Name>ProjectAegis.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.csproj">
+      <Project>{DFD7266B-4801-407C-8DE7-9F0F2F8FB050}</Project>
+      <Name>ProjectAegis.Virtualization</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AddItemsWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectCategoryWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

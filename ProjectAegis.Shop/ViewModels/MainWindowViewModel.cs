@@ -1,22 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Windows;
-using Caliburn.Micro;
-using Microsoft.Win32;
-using ProjectAegis.Localization.Managers;
-using ProjectAegis.Shared.Extensions;
-using ProjectAegis.Shop.Models;
-using ProjectAegis.Shop.Models.Core;
-
-namespace ProjectAegis.Shop.ViewModels
+﻿namespace ProjectAegis.Shop.ViewModels
 {
-    public sealed class MainWindowViewModel : Screen
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Windows;
+    using System.Collections;
+    using System.Globalization;
+    using System.Collections.Generic;
+
+    using Caliburn.Micro;
+
+    using Microsoft.Win32;
+
+    using Models;
+    using Models.Base;
+    using Models.Messages;
+
+    using Shared.Extensions;
+
+    using Localization.Managers;
+
+    public sealed class MainWindowViewModel : 
+        Screen, IHandle<AddItemsMessage>
     {
         #region Private Members
+
+        private readonly IWindowManager _windowManager;
+        private readonly IEventAggregator _eventAggregator;
 
         private Models.Shop _shop;
 
@@ -33,7 +43,6 @@ namespace ProjectAegis.Shop.ViewModels
         #endregion
 
         public int Version { get; set; }
-
         public FileType FileType { get; set; }
 
         #region Language
@@ -55,15 +64,250 @@ namespace ProjectAegis.Shop.ViewModels
 
         #region SectionsAvailability
 
+        public bool AddItemsAvalaibility => _shop != null && _shop.Categories?.Count > 0;
+
         public bool GiftSectionAvailability => Version >= 144;
         public bool OwnerNpcsSectionAvailability => Version >= 152;
 
         #endregion
 
-        public MainWindowViewModel()
-        {
-            base.DisplayName = "shopeditor";
 
+        #region Categories
+
+        public Category SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set
+            {
+                _selectedCategory = value;
+                SubCategories = value?.SubCategories;
+
+                NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(SubCategories));
+                NotifyOfPropertyChange(nameof(SelectedCategoryName));
+            }
+        }
+        public BindableCollection<Category> Categories
+        {
+            get { return _shop?.Categories; }
+            set
+            {
+                _shop.Categories = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public string SelectedCategoryName
+        {
+            get { return _selectedCategory?.Name; }
+            set
+            {
+                _selectedCategory.Name = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public int SelectedCategoryIndex => Categories.IndexOf(SelectedCategory);
+
+        #endregion
+
+        #region SubCategories
+
+        public SubCategory SelectedSubCategory
+        {
+            get { return _selectedSubCategory; }
+            set
+            {
+                _selectedSubCategory = value;
+
+                NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(Items));
+                NotifyOfPropertyChange(nameof(SelectedSubCategoryName));
+            }
+        }
+        public BindableCollection<SubCategory> SubCategories
+        {
+            get { return _subCategories; }
+            set
+            {
+                _subCategories = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public string SelectedSubCategoryName
+        {
+            get { return _selectedSubCategory?.Name; }
+            set
+            {
+                _selectedSubCategory.Name = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public int SelectedSubCategoryIndex => SubCategories.IndexOf(SelectedSubCategory);
+
+        public void AddSubCategory()
+        {
+            if (_subCategories.Count < 8)
+                _subCategories.Add(new SubCategory());
+
+            NotifyOfPropertyChange(nameof(SubCategories));
+        }
+        public void RemoveSubCategories(IList list)
+        {
+
+            var itemsToDelete = new List<Item>();
+            var subCategoriesToDelete = list.Cast<SubCategory>().ToList();
+
+            foreach (var subCategory in subCategoriesToDelete)
+            {
+                itemsToDelete.AddRange(
+                    _shop.Items.Where(
+                        x =>
+                            x.CategoryId == SelectedCategoryIndex &&
+                            x.SubCategoryId == SubCategories.IndexOf(subCategory)
+                        )
+                    );
+            }
+
+            _shop.Items.RemoveRange(itemsToDelete);
+
+            #region MoveItems
+
+            var index = -1;
+
+            for (int i = 0; i < _shop.Items.Count; i++)
+            {
+                if (_shop.Items[i].CategoryId == SelectedCategoryIndex)
+                {
+                    index++;
+
+                    int subCat = _shop.Items[i].SubCategoryId;
+                    int j = i;
+
+                    for (; j < _shop.Items.Count; j++)
+                    {
+                        if (subCat == _shop.Items[j].SubCategoryId)
+                        {
+                            while (_shop.Items[j].SubCategoryId > index)
+                            {
+                                _shop.Items[j].SubCategoryId--;
+                            }
+                        }
+                        else
+                            break;
+                    }
+
+                    i = j - 1;
+                }
+            }
+
+            #endregion
+
+            _subCategories.RemoveRange(subCategoriesToDelete);
+
+            NotifyOfPropertyChange(nameof(SubCategories));
+            NotifyOfPropertyChange(nameof(Items));
+        }
+
+        #endregion
+
+
+        #region Items
+
+        public Item SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                NotifyOfPropertyChange();
+                NotifyOfPropertyChange(nameof(Prices));
+                NotifyOfPropertyChange(nameof(OwnerNpcs));
+            }
+        }
+        public BindableCollection<Item> Items
+        {
+            get
+            {
+                if (_shop != null)
+                {
+                    _items = _shop.Items.Where(
+                        x =>
+                            x.CategoryId == Categories.IndexOf(SelectedCategory) &&
+                            x.SubCategoryId == SubCategories.IndexOf(SelectedSubCategory)
+                        ).ToBindableCollection();
+
+                }
+                return _items;
+            }
+            set { _items = value; }
+        }
+
+        public void AddItem()
+        {
+            _shop.Items.Add(new Item()
+            {
+                Id = _shop.Items.Max(x => x.Id) + 1,
+                CategoryId = SelectedCategoryIndex,
+                SubCategoryId = SelectedSubCategoryIndex
+            });
+
+            NotifyOfPropertyChange(nameof(Items));
+        }
+        public void RemoveItems(IList list)
+        {
+            _items.RemoveRange(list.Cast<Item>());
+
+            NotifyOfPropertyChange(nameof(Items));
+        }
+
+        #endregion
+
+        #region Prices
+
+        public Price SelectedPrice
+        {
+            get { return _selectedPrice; }
+            set
+            {
+                _selectedPrice = value;
+                NotifyOfPropertyChange();
+            }
+        }
+        public BindableCollection<Price> Prices
+        {
+            get { return _selectedItem?.Prices; }
+            set
+            {
+                _selectedItem.Prices = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        #endregion
+
+        #region OwnerNpcs
+
+        public BindableCollection<int> OwnerNpcs
+        {
+            get { return _selectedItem?.OwnerNpcs; }
+            set
+            {
+                _selectedItem.OwnerNpcs = value;
+                NotifyOfPropertyChange();
+            }
+        }
+
+        #endregion
+
+
+        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator)
+        {
+            base.DisplayName = TranslationManager.Instance.Translate("MainWindowHeaderText").ToString();
+
+            _windowManager = windowManager;
+            _eventAggregator = eventAggregator;
+
+            _eventAggregator.Subscribe(this);
+                   
             _currentLanguage = TranslationManager.Instance.CurrentLanguage;
            
             NotifyOfPropertyChange(nameof(CurrentLanguage));
@@ -104,6 +348,7 @@ namespace ProjectAegis.Shop.ViewModels
 
             NotifyOfPropertyChange(nameof(GiftSectionAvailability));
             NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
+            NotifyOfPropertyChange(nameof(AddItemsAvalaibility));
         }
 
         public void Save()
@@ -172,225 +417,35 @@ namespace ProjectAegis.Shop.ViewModels
             NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
         }
 
+        public void AddItems()
+        {
+            var intance = IoC.Get<AddItemsWindowViewModel>();
+            _eventAggregator.PublishOnUIThread(Categories);
+
+            _windowManager.ShowDialog(intance, null);
+        }
+
         public void Exit()
         {
             base.TryClose();
         }
 
-        #region Categories
+        #region Implementation of IHandle<AddItemsMessage>
 
-        public Category SelectedCategory
+        public void Handle(AddItemsMessage message)
         {
-            get { return _selectedCategory; }
-            set
+            foreach (var item in message.Items)
             {
-                _selectedCategory = value;
-                SubCategories = value?.SubCategories;
-
-                NotifyOfPropertyChange();
-                NotifyOfPropertyChange(nameof(SubCategories));
-                NotifyOfPropertyChange(nameof(SelectedCategoryName));
-            }
-        }
-        public BindableCollection<Category> Categories
-        {
-            get { return _shop?.Categories; }
-            set
-            {
-                _shop.Categories = value;
-                NotifyOfPropertyChange();
-            }
-        }
-        public string SelectedCategoryName
-        {
-            get { return _selectedCategory?.Name; }
-            set
-            {
-                _selectedCategory.Name = value;
-                NotifyOfPropertyChange();
-            }
-        }
-        public int SelectedCategoryIndex => Categories.IndexOf(SelectedCategory);
-
-        #endregion
-
-        #region SubCategories
-
-        public SubCategory SelectedSubCategory
-        {
-            get { return _selectedSubCategory; }
-            set
-            {
-                _selectedSubCategory = value;
-                _items = _shop.Items.Where(
-                    x =>
-                        x.CategoryId == Categories.IndexOf(SelectedCategory) &&
-                        x.SubCategoryId == SubCategories.IndexOf(SelectedSubCategory)
-                    ).ToBindableCollection();
-
-                NotifyOfPropertyChange();
-                NotifyOfPropertyChange(nameof(Items));
-                NotifyOfPropertyChange(nameof(SelectedSubCategoryName));
-            }
-        }
-        public BindableCollection<SubCategory> SubCategories
-        {
-            get { return _subCategories; }
-            set
-            {
-                _subCategories = value; 
-                NotifyOfPropertyChange();
-            }
-        }
-        public string SelectedSubCategoryName
-        {
-            get { return _selectedSubCategory?.Name; }
-            set
-            {
-                _selectedSubCategory.Name = value;
-                NotifyOfPropertyChange();
-            }
-        }
-        public int SelectedSubCategoryIndex => SubCategories.IndexOf(SelectedSubCategory);
-
-        public void AddSubCategory()
-        {
-            if(_subCategories.Count < 8)
-                _subCategories.Add(new SubCategory());
-
-            NotifyOfPropertyChange(nameof(SubCategories));
-        }
-        public void RemoveSubCategories(IList list)
-        {
-
-            var itemsToDelete = new List<Item>();
-            var subCategoriesToDelete = list.Cast<SubCategory>().ToList();
-
-            foreach (var subCategory in subCategoriesToDelete)
-            {
-                itemsToDelete.AddRange(
-                    _shop.Items.Where(
-                        x =>
-                            x.CategoryId == SelectedCategoryIndex &&
-                            x.SubCategoryId == SubCategories.IndexOf(subCategory)
-                        )
-                    );
-            }
-
-            _shop.Items.RemoveRange(itemsToDelete);
-
-            #region MoveItems
-
-            var index = -1;
-
-            for (int i = 0; i < _shop.Items.Count; i++)
-            {
-                if (_shop.Items[i].CategoryId == SelectedCategoryIndex)
+                _shop.Items.Add(new Item()
                 {
-                    index++;
-
-                    int subCat = _shop.Items[i].SubCategoryId;
-                    int j = i;
-
-                    for (; j < _shop.Items.Count; j++)
-                    {
-                        if (subCat == _shop.Items[j].SubCategoryId)
-                        {
-                            while (_shop.Items[j].SubCategoryId > index)
-                            {
-                                _shop.Items[j].SubCategoryId--;
-                            }
-                        }
-                        else
-                            break;
-                    }
-
-                    i = j - 1;
-                }
+                    Id = _shop.Items.Max(x => x.Id + 1),
+                    ItemId = item,
+                    CategoryId = Categories.IndexOf(message.Category),
+                    SubCategoryId = SubCategories.IndexOf(message.SubCategory)
+                });
             }
-
-            #endregion
-
-            _subCategories.RemoveRange(subCategoriesToDelete);
-
-            NotifyOfPropertyChange(nameof(SubCategories));
-            NotifyOfPropertyChange(nameof(Items));
-        }
-
-        #endregion
-
-        #region Items
-
-        public Item SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value; 
-                NotifyOfPropertyChange();
-                NotifyOfPropertyChange(nameof(Prices));
-                NotifyOfPropertyChange(nameof(OwnerNpcs));
-            }
-        }
-        public BindableCollection<Item> Items
-        {
-            get { return _items; }
-            set { _items = value; }
-        }
-
-        public void AddItem()
-        {
-            _items.Add(new Item()
-            {
-                Id = _shop.Items.Max(x => x.Id) + 1,
-                CategoryId = SelectedCategoryIndex,
-                SubCategoryId = SelectedSubCategoryIndex
-            });
 
             NotifyOfPropertyChange(nameof(Items));
-        }
-        public void RemoveItems(IList list)
-        {
-            _items.RemoveRange(list.Cast<Item>());
-
-            NotifyOfPropertyChange(nameof(Items));
-        }
-
-        #endregion
-
-        #region Prices
-
-        public Price SelectedPrice
-        {
-            get { return _selectedPrice; }
-            set
-            {
-                _selectedPrice = value;
-                NotifyOfPropertyChange();
-            }
-        }
-        public BindableCollection<Price> Prices
-        {
-            get { return _selectedItem?.Prices; }
-            set
-            {
-                _selectedItem.Prices = value; 
-                NotifyOfPropertyChange();
-            }
-        }
-
-        #endregion
-
-        #region OwnerNpcs
-
-        public BindableCollection<int> OwnerNpcs
-        {
-            get { return _selectedItem?.OwnerNpcs; }
-            set
-            {
-                _selectedItem.OwnerNpcs = value;
-                NotifyOfPropertyChange();
-            }
         }
 
         #endregion

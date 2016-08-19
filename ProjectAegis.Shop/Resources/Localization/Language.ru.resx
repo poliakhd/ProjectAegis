@@ -123,6 +123,9 @@
   <data name="AddFromElementText" xml:space="preserve">
     <value>Добавить из elements.data</value>
   </data>
+  <data name="AddItemsToCategoryText" xml:space="preserve">
+    <value>Добавить в ...</value>
+  </data>
   <data name="AddItemText" xml:space="preserve">
     <value>Добавить</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="MainText" xml:space="preserve">
     <value>Основное</value>
+  </data>
+  <data name="OpenElementsDataText" xml:space="preserve">
+    <value>Открыть</value>
   </data>
   <data name="OpenText" xml:space="preserve">
     <value>Открыть</value>
@@ -228,7 +234,19 @@
   <data name="SaveText" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="SelectCategoriesText" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
   <data name="UnloadFile" xml:space="preserve">
     <value>Выгрузить файл</value>
+  </data>
+  <data name="AddItemsWindowHeaderText" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="MainWindowHeaderText" xml:space="preserve">
+    <value>ShopEditor</value>
+  </data>
+  <data name="SelectCategoryHeaderText" xml:space="preserve">
+    <value>Выбрать категорию</value>
   </data>
 </root>

@@ -79,6 +79,24 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add items to....
+        /// </summary>
+        internal static string AddItemsToCategoryText {
+            get {
+                return ResourceManager.GetString("AddItemsToCategoryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add items.
+        /// </summary>
+        internal static string AddItemsWindowHeaderText {
+            get {
+                return ResourceManager.GetString("AddItemsWindowHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         internal static string AddItemText {
@@ -228,6 +246,24 @@ namespace ProjectAegis.Shop.Resources.Localization {
         internal static string MainText {
             get {
                 return ResourceManager.GetString("MainText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ShopEditor.
+        /// </summary>
+        internal static string MainWindowHeaderText {
+            get {
+                return ResourceManager.GetString("MainWindowHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string OpenElementsDataText {
+            get {
+                return ResourceManager.GetString("OpenElementsDataText", resourceCulture);
             }
         }
         
@@ -390,6 +426,24 @@ namespace ProjectAegis.Shop.Resources.Localization {
         internal static string SaveText {
             get {
                 return ResourceManager.GetString("SaveText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        internal static string SelectCategoriesText {
+            get {
+                return ResourceManager.GetString("SelectCategoriesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select category.
+        /// </summary>
+        internal static string SelectCategoryHeaderText {
+            get {
+                return ResourceManager.GetString("SelectCategoryHeaderText", resourceCulture);
             }
         }
         

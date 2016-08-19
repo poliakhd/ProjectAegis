@@ -1,16 +1,16 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using Caliburn.Micro;
-using ProjectAegis.Shop.Models.Core;
-
-namespace ProjectAegis.Shop.Models
+﻿namespace ProjectAegis.Shop.Models
 {
-    using Shared.Extensions;
-    using Shared.Interfaces;
+    using System;
 
     using System.IO;
-    using System.Collections.ObjectModel;
+    using System.Text;
+
+    using Caliburn.Micro;
+
+    using Base;
+
+    using Shared.Extensions;
+    using Shared.Interfaces;
 
     public class Category : PropertyChangedBase, IBinaryModel
     {
