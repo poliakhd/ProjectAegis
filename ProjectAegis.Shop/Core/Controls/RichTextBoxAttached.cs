@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-
-namespace ProjectAegis.Shop.Core.Controls
+﻿namespace ProjectAegis.Shop.Core.Controls
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Documents;
+
     public class RichTextBoxAttached
     {
         public static readonly DependencyProperty BindableDocumentProperty =

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace ProjectAegis.Virtualization.Interfaces
+﻿namespace ProjectAegis.Virtualization.Interfaces
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Represents a provider of collection details.
     /// </summary>

@@ -15,6 +15,7 @@
     using Models;
     using Models.Base;
     using Models.Messages;
+    using Providers.Interfaces;
 
     using Shared.Extensions;
 
@@ -27,6 +28,7 @@
 
         private readonly IWindowManager _windowManager;
         private readonly IEventAggregator _eventAggregator;
+        private readonly IItemInformationProvider _itemInformationProvider;
 
         private Models.Shop _shop;
 
@@ -298,13 +300,37 @@
 
         #endregion
 
+        #region ItemInformation
 
-        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator)
+        public IEnumerable<string> InformationSources => _itemInformationProvider.GetAvailableProviders();
+
+        public string SelectedInformationSource { get; set; }
+
+        public void GetItemInformation()
+        {
+            if (SelectedItem != null && !string.IsNullOrEmpty(SelectedInformationSource))
+            {
+                var name = _itemInformationProvider.GetName(SelectedItem.ItemId, SelectedInformationSource);
+                if (!string.IsNullOrEmpty(name))
+                    SelectedItem.Name = name;
+
+                var descriprion = _itemInformationProvider.GetDescription(SelectedItem.ItemId, SelectedInformationSource);
+                if (!string.IsNullOrEmpty(descriprion))
+                    SelectedItem.Description = descriprion;
+            }
+        }
+
+        #endregion
+
+        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator, IItemInformationProvider itemInformationProvider)
         {
             base.DisplayName = TranslationManager.Instance.Translate("MainWindowHeaderText").ToString();
 
             _windowManager = windowManager;
             _eventAggregator = eventAggregator;
+            _itemInformationProvider = itemInformationProvider;
+
+            NotifyOfPropertyChange(nameof(InformationSources));
 
             _eventAggregator.Subscribe(this);
                    

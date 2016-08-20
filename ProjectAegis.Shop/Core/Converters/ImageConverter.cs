@@ -1,11 +1,11 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Windows.Data;
-using System.Windows.Media.Imaging;
-
-namespace ProjectAegis.Shop.Core.Converters
+﻿namespace ProjectAegis.Shop.Core.Converters
 {
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Windows.Data;
+    using System.Windows.Media.Imaging;
+
     public sealed class ImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,

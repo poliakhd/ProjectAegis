@@ -1,11 +1,11 @@
-﻿using ProjectAegis.Virtualization.Interfaces;
-
-namespace ProjectAegis.Virtualization
+﻿namespace ProjectAegis.Virtualization
 {
     using System.Threading;
     using System.ComponentModel;
     using System.Collections.Generic;
     using System.Collections.Specialized;
+
+    using Interfaces;
 
     /// <summary>
     /// Specialized list implementation that provides async data virtualization. The collection is divided up into pages,

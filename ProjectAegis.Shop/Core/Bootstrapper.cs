@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ProjectAegis.Shop.Providers;
+using ProjectAegis.Shop.Providers.Interfaces;
 
 namespace ProjectAegis.Shop.Core
 {
+    using System;
     using System.Windows;
     using System.Reflection;
+    using System.Collections.Generic;
 
     using Caliburn.Micro;
 
@@ -24,7 +26,8 @@ namespace ProjectAegis.Shop.Core
 
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
-            
+            _container.Singleton<IItemInformationProvider, BasicItemInformationProvider>();
+
             Initialize();
             InitializeLocalization();        
         }

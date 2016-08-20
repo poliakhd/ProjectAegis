@@ -85,6 +85,8 @@
     <Compile Include="Models\Base\FileType.cs" />
     <Compile Include="Models\Elements.cs" />
     <Compile Include="Models\Messages\AddItemsMessage.cs" />
+    <Compile Include="Providers\BasicItemInformationProvider.cs" />
+    <Compile Include="Providers\Interfaces\IItemInformationProvider.cs" />
     <Compile Include="Resources\Localization\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
