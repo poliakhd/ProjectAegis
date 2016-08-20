@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace ProjectAegis.Shop.Models.Messages
+﻿namespace ProjectAegis.Shop.Models.Messages
 {
+    using System.Collections.Generic;
+
+    using Models;
+
     public class AddItemsMessage
     {
-        public Category Category { get; set; }
-        public SubCategory SubCategory { get; set; }
-
-        public IEnumerable<int> Items { get; set; }
+        public IEnumerable<Item> Items { get; set; }
     }
 }

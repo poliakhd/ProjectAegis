@@ -98,7 +98,7 @@
         }
         public void AddItemsToCategory(IList items)
         {
-            var itemsAsElements = items.Cast<Element>();
+            var elements = items.Cast<Element>();
 
             var instance = IoC.Get<SelectCategoryWindowViewModel>();
             _eventAggregator.PublishOnUIThread(_categories);
@@ -108,12 +108,18 @@
             if(result != null && !result.Value)
                 return;
 
+            var addItems  = elements.Select(x => new Item()
+            {
+                CategoryId = instance.Categories.IndexOf(instance.SelectedCategory),
+                SubCategoryId = instance.SubCategories.IndexOf(instance.SelectedSubCategory),
+                ItemId = x.Id,
+                Name = x.Name
+            });
+
             _eventAggregator.PublishOnUIThread(
                 new AddItemsMessage()
                 {
-                    Category = instance.SelectedCategory,
-                    SubCategory = instance.SelectedSubCategory,
-                    Items = itemsAsElements.Select(x => x.Id)
+                    Items = addItems
                 }
             );
         }

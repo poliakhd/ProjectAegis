@@ -60,7 +60,7 @@
 
         public void AddItemsToCategory()
         {
-            TryClose();
+            TryClose(true);
         }
         public bool CanAddItemsToCategory => SelectedCategory != null && SelectedSubCategory != null;
 

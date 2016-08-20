@@ -436,13 +436,8 @@
         {
             foreach (var item in message.Items)
             {
-                _shop.Items.Add(new Item()
-                {
-                    Id = _shop.Items.Max(x => x.Id + 1),
-                    ItemId = item,
-                    CategoryId = Categories.IndexOf(message.Category),
-                    SubCategoryId = SubCategories.IndexOf(message.SubCategory)
-                });
+                item.Id = _shop.Items.Max(x => x.Id) + 1;
+                _shop.Items.Add(item);
             }
 
             NotifyOfPropertyChange(nameof(Items));
