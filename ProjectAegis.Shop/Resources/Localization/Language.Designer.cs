@@ -61,15 +61,6 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        internal static string AboutText {
-            get {
-                return ResourceManager.GetString("AboutText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add from elements.data.
         /// </summary>
         internal static string AddFromElementText {
@@ -111,6 +102,15 @@ namespace ProjectAegis.Shop.Resources.Localization {
         internal static string AddSubCategoryText {
             get {
                 return ResourceManager.GetString("AddSubCategoryText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build: .
+        /// </summary>
+        internal static string BuildText {
+            get {
+                return ResourceManager.GetString("BuildText", resourceCulture);
             }
         }
         

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutText" xml:space="preserve">
-    <value>About</value>
-  </data>
   <data name="AddFromElementText" xml:space="preserve">
     <value>Add from elements.data</value>
   </data>
@@ -248,5 +245,8 @@
   </data>
   <data name="SelectCategoryHeaderText" xml:space="preserve">
     <value>Select category</value>
+  </data>
+  <data name="BuildText" xml:space="preserve">
+    <value>Build: </value>
   </data>
 </root>
