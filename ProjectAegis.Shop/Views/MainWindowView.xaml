@@ -247,7 +247,7 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Text="© p.daniil, 2016 " FontWeight="SemiBold"/>
                 <TextBlock Text="{localization:Translate BuildText}"></TextBlock>
-                <TextBlock FontWeight="SemiBold" Text="1.0.0.15"/>
+                <TextBlock FontWeight="SemiBold" Text="{Binding Path=BuildVersion}"/>
             </StackPanel>
           
         </Grid>

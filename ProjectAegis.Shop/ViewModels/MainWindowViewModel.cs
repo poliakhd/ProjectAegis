@@ -4,6 +4,7 @@
     using System.IO;
     using System.Linq;
     using System.Windows;
+    using System.Reflection;
     using System.Collections;
     using System.Globalization;
     using System.Collections.Generic;
@@ -43,6 +44,8 @@
         private CultureInfo _currentLanguage;
 
         #endregion
+
+        public string BuildVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public int Version { get; set; }
         public FileType FileType { get; set; }
@@ -338,6 +341,7 @@
            
             NotifyOfPropertyChange(nameof(CurrentLanguage));
             NotifyOfPropertyChange(nameof(Languages));
+            NotifyOfPropertyChange(nameof(BuildVersion));
         }
 
         public void Load(int version, FileType fileType)

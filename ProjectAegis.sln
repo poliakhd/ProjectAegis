@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAegis.Localization",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectAegis.Virtualization", "ProjectAegis.Virtualization\ProjectAegis.Virtualization.csproj", "{DFD7266B-4801-407C-8DE7-9F0F2F8FB050}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{75BF573D-F35C-46C1-99A0-5BB04520E569}"
+	ProjectSection(SolutionItems) = preProject
+		AssemblyVersionInfo.cs = AssemblyVersionInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
