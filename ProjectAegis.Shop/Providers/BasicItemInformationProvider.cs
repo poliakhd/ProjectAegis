@@ -73,8 +73,14 @@
 
             #region pwdatabase.com/ru
             
-            _availableProviders.Add("pwdatabase.com/ru");    
-            
+            _availableProviders.Add("pwdatabase.com/ru");
+
+            #endregion
+
+            #region pwdatabase.com/en
+
+            _availableProviders.Add("pwdatabase.com/en");
+
             #endregion
         }
 
@@ -86,6 +92,9 @@
             {
                 case "pwdatabase.com/ru":
                     name = NameFromRuWeb(itemId);
+                    break;
+                case "pwdatabase.com/en":
+                    name = NameFromEnWeb(itemId);
                     break;
             }
 
@@ -114,11 +123,20 @@
 
         private string NameFromRuWeb(int itemId)
         {
+            return NameFromWeb(itemId, "http://pwdatabase.com/ru");
+        }
+        private string NameFromEnWeb(int itemId)
+        {
+            return NameFromWeb(itemId, "http://pwdatabase.com/");
+        }
+
+        private string NameFromWeb(int itemId, string url)
+        {
             string name = string.Empty;
 
             try
             {
-                var request = (HttpWebRequest)WebRequest.Create("http://pwdatabase.com/ru/items/" + itemId.ToString());
+                var request = (HttpWebRequest)WebRequest.Create($"{url}/items/" + itemId.ToString());
                 var response = (HttpWebResponse)request.GetResponse();
 
                 using (var streamReader = new StreamReader(response.GetResponseStream()))
@@ -153,6 +171,7 @@
             }
 
             return name;
+
         }
 
         private string DescriptionFromItemExtDesc(int itemId)
