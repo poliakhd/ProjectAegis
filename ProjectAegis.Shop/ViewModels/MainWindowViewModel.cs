@@ -259,7 +259,7 @@
         }
         public void RemoveItems(IList list)
         {
-            _items.RemoveRange(list.Cast<Item>());
+            _shop.Items.RemoveRange(list.Cast<Item>());
 
             NotifyOfPropertyChange(nameof(Items));
         }
