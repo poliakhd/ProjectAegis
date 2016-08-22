@@ -71,8 +71,10 @@
 
             #endregion
 
+            #region Languages
+
             #region pwdatabase.com/ru
-            
+
             _availableProviders.Add("pwdatabase.com/ru");
 
             #endregion
@@ -80,6 +82,50 @@
             #region pwdatabase.com/en
 
             _availableProviders.Add("pwdatabase.com/en");
+
+            #endregion
+
+            #region pwdatabase.com/fr
+
+            _availableProviders.Add("pwdatabase.com/fr");
+
+            #endregion
+
+            #region pwdatabase.com/de
+
+            _availableProviders.Add("pwdatabase.com/de");
+
+            #endregion
+
+            #region pwdatabase.com/cn
+
+            _availableProviders.Add("pwdatabase.com/cn");
+
+            #endregion
+
+            #region pwdatabase.com/br
+
+            _availableProviders.Add("pwdatabase.com/br");
+
+            #endregion
+
+            #region pwdatabase.com/jp
+
+            _availableProviders.Add("pwdatabase.com/jp");
+
+            #endregion
+
+            #region pwdatabase.com/ph
+
+            _availableProviders.Add("pwdatabase.com/ph");
+
+            #endregion
+
+            #region pwdatabase.com/my
+
+            _availableProviders.Add("pwdatabase.com/my");
+
+            #endregion
 
             #endregion
         }
@@ -90,11 +136,11 @@
 
             switch (provider)
             {
-                case "pwdatabase.com/ru":
-                    name = NameFromRuWeb(itemId);
-                    break;
                 case "pwdatabase.com/en":
-                    name = NameFromEnWeb(itemId);
+                    name = NameFromWeb(itemId, $"http://{provider.Replace(@"/en", "")}");
+                    break;
+                default:
+                    name = NameFromWeb(itemId, $"http://{provider}");
                     break;
             }
 
@@ -120,15 +166,6 @@
         }
 
         #endregion
-
-        private string NameFromRuWeb(int itemId)
-        {
-            return NameFromWeb(itemId, "http://pwdatabase.com/ru");
-        }
-        private string NameFromEnWeb(int itemId)
-        {
-            return NameFromWeb(itemId, "http://pwdatabase.com/");
-        }
 
         private string NameFromWeb(int itemId, string url)
         {
