@@ -8,8 +8,8 @@
                 xmlns:localization="clr-namespace:ProjectAegis.Localization;assembly=ProjectAegis.Localization"
                 xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                Width="960.917"
-                Height="584"
+                Width="970.917"
+                Height="667.999"
                 Icon="../Resources/Icons/Icon.ico"
                 mc:Ignorable="d">
 
@@ -94,6 +94,11 @@
                                 <Image Source="../Resources/Icons/wrench.png" />
                             </MenuItem.Icon>
                         </MenuItem>
+                        <MenuItem cal:Message.Attach="Load(153, 1)" Header="1.5.3">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
 
                     <MenuItem Header="Server">
@@ -112,6 +117,11 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem cal:Message.Attach="Load(152, 2)" Header="1.5.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Load(153, 2)" Header="1.5.3">
                             <MenuItem.Icon>
                                 <Image Source="../Resources/Icons/wrench.png" />
                             </MenuItem.Icon>
@@ -153,6 +163,11 @@
                                 <Image Source="../Resources/Icons/wrench.png" />
                             </MenuItem.Icon>
                         </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(153, 1)" Header="1.5.3">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
 
                     <MenuItem Header="Server">
@@ -171,6 +186,11 @@
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem cal:Message.Attach="Save(152, 2)" Header="1.5.2">
+                            <MenuItem.Icon>
+                                <Image Source="../Resources/Icons/wrench.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem cal:Message.Attach="Save(153, 2)" Header="1.5.3">
                             <MenuItem.Icon>
                                 <Image Source="../Resources/Icons/wrench.png" />
                             </MenuItem.Icon>
@@ -209,7 +229,7 @@
               Margin="3,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
 
@@ -222,9 +242,10 @@
 
                 <TextBlock VerticalAlignment="Center" Text="{localization:Translate GetDataFromText}" />
 
-                <ComboBox x:Name="InformationSources" Grid.Column="1"
-                      MinWidth="120"
-                      VerticalAlignment="Center">
+                <ComboBox x:Name="InformationSources"
+                          Grid.Column="1"
+                          MinWidth="120"
+                          VerticalAlignment="Center">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -234,22 +255,26 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <Button Grid.Column="2" x:Name="GetItemInformation" Focusable="False"
-                    Height="26"
-                    Margin="2,0,0,0"
-                    VerticalAlignment="Center">
+                <Button x:Name="GetItemInformation"
+                        Grid.Column="2"
+                        Height="26"
+                        Margin="2,0,0,0"
+                        VerticalAlignment="Center"
+                        Focusable="False">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../Resources/Icons/package_go.png" />
                     </StackPanel>
                 </Button>
             </Grid>
-            
-            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock Text="© p.daniil, 2016 " FontWeight="SemiBold"/>
-                <TextBlock Text="{localization:Translate BuildText}"></TextBlock>
-                <TextBlock FontWeight="SemiBold" Text="{Binding Path=BuildVersion}"/>
+
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                <TextBlock FontWeight="SemiBold" Text="© p.daniil, 2016 " />
+                <TextBlock Text="{localization:Translate BuildText}" />
+                <TextBlock FontWeight="SemiBold" Text="{Binding Path=BuildVersion}" />
             </StackPanel>
-          
+
         </Grid>
 
         <Grid Grid.Row="1"
@@ -468,6 +493,8 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
 
@@ -502,8 +529,7 @@
                                            Margin="0,0,3,0"
                                            VerticalAlignment="Center"
                                            Text="{localization:Translate ItemNameText}" />
-                                <TextBox Name="ItemName"
-                                         Grid.Row="2"
+                                <TextBox Grid.Row="2"
                                          Grid.Column="1"
                                          Height="26"
                                          Margin="1"
@@ -530,15 +556,61 @@
 
                                 </TextBox>
 
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="0"
+                                           Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           Text="{localization:Translate PeriodLimitText}" />
+
+
+                                <TextBox Grid.Row="4"
+                                         Grid.Column="1"
+                                         Height="26"
+                                         Margin="1"
+                                         VerticalContentAlignment="Center"
+                                         IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                            AncestorType={x:Type Window}},
+                                                             Path=DataContext.Version153Sections,
+                                                             UpdateSourceTrigger=PropertyChanged}"
+                                         IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                             AncestorType={x:Type Window}},
+                                                              Path=DataContext.Version153Sections,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                         Text="{Binding Path=PeriodLimit,
+                                                        Mode=TwoWay,
+                                                        UpdateSourceTrigger=PropertyChanged}" />
+
+                                <TextBlock Grid.Row="5"
+                                           Grid.Column="0"
+                                           Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           Text="{localization:Translate AvailableFrequencyText}" />
+
+                                <TextBox Grid.Row="5"
+                                         Grid.Column="1"
+                                         Height="26"
+                                         Margin="1"
+                                         VerticalContentAlignment="Center"
+                                         IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                            AncestorType={x:Type Window}},
+                                                             Path=DataContext.Version153Sections,
+                                                             UpdateSourceTrigger=PropertyChanged}"
+                                         IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                             AncestorType={x:Type Window}},
+                                                              Path=DataContext.Version153Sections,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                         Text="{Binding Path=AvailableFrequency,
+                                                        Mode=TwoWay,
+                                                        UpdateSourceTrigger=PropertyChanged}" />
+
                             </Grid>
 
                             <Border Grid.Column="1"
-                                    Height="110"
                                     Margin="1"
                                     Background="Black"
                                     BorderBrush="#FFABADB3"
                                     BorderThickness="1">
-                                <Image Source="{Binding Path=TextureForIcon, Converter={StaticResource ImageConverter}}" />
+                                <Image Source="{Binding Path=TextureForIcon, Converter={StaticResource ImageConverter}}" Stretch="Uniform" />
                             </Border>
 
                         </Grid>
@@ -583,7 +655,7 @@
                                       BorderBrush="#FFABADB3"
                                       BorderThickness="1"
                                       Header="{localization:Translate GiftText}"
-                                      IsEnabled="{Binding Path=GiftSectionAvailability,
+                                      IsEnabled="{Binding Path=Version144Sections,
                                                           UpdateSourceTrigger=PropertyChanged}"
                                       Padding="2">
                                 <Grid DataContext="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}">
@@ -649,7 +721,7 @@
                             <Expander x:Name="OwnerNpcsSection"
                                       Grid.Column="1"
                                       Header="{localization:Translate OwnerNpcsText}"
-                                      IsEnabled="{Binding Path=OwnerNpcsSectionAvailability,
+                                      IsEnabled="{Binding Path=Version152Sections,
                                                           UpdateSourceTrigger=PropertyChanged}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -734,9 +806,6 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
@@ -782,8 +851,7 @@
                                            Margin="1,0,3,0"
                                            VerticalAlignment="Center"
                                            Text="{localization:Translate PriceItemExpireDateText}" />
-                                <TextBox Name="ExpireDateBox"
-                                         Grid.Row="1"
+                                <TextBox Grid.Row="1"
                                          Grid.Column="3"
                                          Margin="1"
                                          Text="{Binding Path=ExpireDate}" />
@@ -792,8 +860,7 @@
                                            Margin="0,0,3,0"
                                            VerticalAlignment="Center"
                                            Text="{localization:Translate PriceItemControlTypeText}" />
-                                <TextBox Name="ControlTypeBox"
-                                         Grid.Row="2"
+                                <TextBox Grid.Row="2"
                                          Grid.Column="1"
                                          Margin="1"
                                          Text="{Binding Path=ControlType}" />
@@ -802,8 +869,7 @@
                                            Margin="1,0,3,0"
                                            VerticalAlignment="Center"
                                            Text="{localization:Translate PriceItemDayText}" />
-                                <TextBox Name="DayBox"
-                                         Grid.Row="2"
+                                <TextBox Grid.Row="2"
                                          Grid.Column="3"
                                          Margin="1"
                                          Text="{Binding Path=Day}" />
@@ -821,11 +887,28 @@
                                            Margin="1,0,3,0"
                                            VerticalAlignment="Center"
                                            Text="{localization:Translate PriceItemFlagText}" />
-                                <TextBox Name="FlagsBox"
-                                         Grid.Row="3"
+                                <TextBox Grid.Row="3"
                                          Grid.Column="3"
                                          Margin="1"
                                          Text="{Binding Path=Flags}" />
+
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="0"
+                                           Margin="0,0,3,0"
+                                           VerticalAlignment="Center"
+                                           Text="{localization:Translate VipLevelText}" />
+                                <TextBox Grid.Row="4"
+                                         Grid.Column="1"
+                                         Margin="1"
+                                         IsEnabled="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                            AncestorType={x:Type Window}},
+                                                             Path=DataContext.Version153Sections,
+                                                             UpdateSourceTrigger=PropertyChanged}"
+                                         IsReadOnly="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                             AncestorType={x:Type Window}},
+                                                              Path=DataContext.Version153Sections,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                         Text="{Binding Path=VipLevel}" />
                             </Grid>
                         </GroupBox>
                     </Grid>

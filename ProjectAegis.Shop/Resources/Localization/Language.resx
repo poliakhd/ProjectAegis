@@ -249,4 +249,13 @@
   <data name="BuildText" xml:space="preserve">
     <value>Build: </value>
   </data>
+  <data name="AvailableFrequencyText" xml:space="preserve">
+    <value>Available frequency</value>
+  </data>
+  <data name="PeriodLimitText" xml:space="preserve">
+    <value>Period limit</value>
+  </data>
+  <data name="VipLevelText" xml:space="preserve">
+    <value>VIP level</value>
+  </data>
 </root>

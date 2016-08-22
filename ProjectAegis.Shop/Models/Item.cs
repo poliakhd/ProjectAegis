@@ -101,6 +101,9 @@
 
         public BindableCollection<int> OwnerNpcs { get; set; }
 
+        public int PeriodLimit { get; set; }
+        public int AvailableFrequency { get; set; }
+
         public Item()
         {
             _description = "NULL".ToBytes("Unicode", 128);
@@ -233,6 +236,12 @@
                 for (int i = 0; i < 8; i++)
                     OwnerNpcs.Add(reader.ReadInt32());
             }
+
+            if (version >= 153)
+            {
+                PeriodLimit = reader.ReadInt32();
+                AvailableFrequency = reader.ReadInt32();
+            }
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
@@ -278,6 +287,12 @@
             {
                 foreach (var ownerNpc in OwnerNpcs)
                     writer.Write(ownerNpc);
+            }
+
+            if (version >= 153)
+            {
+                writer.Write(PeriodLimit);
+                writer.Write(AvailableFrequency);
             }
         }
 

@@ -72,6 +72,7 @@
         public int Day { get; set; }
         public int Status { get; set; }
         public int Flags { get; set; }
+        public int VipLevel { get; set; }
 
         #region Implementation of IBinaryModel
 
@@ -89,6 +90,9 @@
                 Status = reader.ReadInt32();
                 Flags = reader.ReadInt32();
             }
+
+            if (version >= 153)
+                VipLevel = reader.ReadInt32();
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
@@ -105,6 +109,9 @@
                 writer.Write(Status);
                 writer.Write(Flags);
             }
+
+            if(version >= 153)
+                writer.Write(VipLevel);
         }
 
         #endregion

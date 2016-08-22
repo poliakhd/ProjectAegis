@@ -106,6 +106,15 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available frequency.
+        /// </summary>
+        internal static string AvailableFrequencyText {
+            get {
+                return ResourceManager.GetString("AvailableFrequencyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Build: .
         /// </summary>
         internal static string BuildText {
@@ -295,6 +304,15 @@ namespace ProjectAegis.Shop.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period limit.
+        /// </summary>
+        internal static string PeriodLimitText {
+            get {
+                return ResourceManager.GetString("PeriodLimitText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Control.
         /// </summary>
         internal static string PriceItemControlTypeText {
@@ -453,6 +471,15 @@ namespace ProjectAegis.Shop.Resources.Localization {
         internal static string UnloadFile {
             get {
                 return ResourceManager.GetString("UnloadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VIP level.
+        /// </summary>
+        internal static string VipLevelText {
+            get {
+                return ResourceManager.GetString("VipLevelText", resourceCulture);
             }
         }
     }

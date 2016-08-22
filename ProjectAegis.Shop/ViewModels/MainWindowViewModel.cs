@@ -71,8 +71,9 @@
 
         public bool AddItemsAvalaibility => _shop != null && _shop.Categories?.Count > 0;
 
-        public bool GiftSectionAvailability => Version >= 144;
-        public bool OwnerNpcsSectionAvailability => Version >= 152;
+        public bool Version144Sections => Version >= 144;
+        public bool Version152Sections => Version >= 152;
+        public bool Version153Sections => Version >= 153;
 
         #endregion
 
@@ -376,9 +377,11 @@
             Version = version;
             FileType = fileType;
 
-            NotifyOfPropertyChange(nameof(GiftSectionAvailability));
-            NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
             NotifyOfPropertyChange(nameof(AddItemsAvalaibility));
+
+            NotifyOfPropertyChange(nameof(Version144Sections));
+            NotifyOfPropertyChange(nameof(Version152Sections));
+            NotifyOfPropertyChange(nameof(Version153Sections));
         }
 
         public void Save()
@@ -443,8 +446,11 @@
             Version = -1;
             FileType = FileType.Client;
 
-            NotifyOfPropertyChange(nameof(GiftSectionAvailability));
-            NotifyOfPropertyChange(nameof(OwnerNpcsSectionAvailability));
+            NotifyOfPropertyChange(nameof(AddItemsAvalaibility));
+
+            NotifyOfPropertyChange(nameof(Version144Sections));
+            NotifyOfPropertyChange(nameof(Version152Sections));
+            NotifyOfPropertyChange(nameof(Version153Sections));
         }
 
         public void AddItems()
