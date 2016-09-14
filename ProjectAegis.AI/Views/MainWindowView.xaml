@@ -1,0 +1,395 @@
+﻿<ma:MetroWindow x:Class="ProjectAegis.AI.Views.MainWindowView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:converters="clr-namespace:ProjectAegis.AI.Helpers.Converters"
+                xmlns:local="clr-namespace:ProjectAegis.AI.Models"
+                xmlns:ma="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                xmlns:operands="clr-namespace:ProjectAegis.AI.Models.Types.Operands"
+                xmlns:params="clr-namespace:ProjectAegis.AI.Models.Parameters"
+                xmlns:system="clr-namespace:System;assembly=mscorlib"
+                xmlns:tparams="clr-namespace:ProjectAegis.AI.Models.TargetParameters"
+                xmlns:types="clr-namespace:ProjectAegis.AI.Models.Types"
+                x:Name="Window"
+                Title="aieditor community edition"
+                Width="1100"
+                Height="600">
+    
+    <ma:MetroWindow.Resources>
+        <ObjectDataProvider x:Key="TypeValues"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="types:ParameterType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="TargetTypeValues"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="types:TargetParameterType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider x:Key="OperandsValues"
+                            MethodName="GetValues"
+                            ObjectType="{x:Type system:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="operands:OperandType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
+    </ma:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="838*" />
+            <ColumnDefinition Width="75*" />
+            <ColumnDefinition Width="180*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Grid.ColumnSpan="3"
+              Margin="7,5,7,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Command="{Binding Path=OpenFileCommand}"
+                    Focusable="False">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                               Height="15"
+                               Fill="Black">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="5,0,0,0" Text="Open" />
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1"
+                    Margin="3,0,0,0"
+                    Command="{Binding SaveFileCommand}"
+                    Focusable="False">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="17"
+                               Height="15"
+                               Fill="Black">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"  />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="5,0,0,0" Text="Save" />
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2"
+                    Margin="3,0,0,0"
+                    Focusable="False">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="17"
+                               Height="15"
+                               Fill="Black">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"  />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="5,0,0,0" Text="Save as" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="3"
+              Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0"
+                      Margin="2,0"
+                      Header="Controllers">
+                <ListView ItemsSource="{Binding Path=Controllers,
+                                                Mode=OneWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                          SelectedIndex="{Binding Path=ControllerIndex,
+                                                  Mode=TwoWay,
+                                                  UpdateSourceTrigger=PropertyChanged}"
+                          SelectedItem="{Binding Path=Controller,
+                                                 Mode=TwoWay,
+                                                 UpdateSourceTrigger=PropertyChanged}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type local:Controller}">
+                            <TextBlock FontWeight="SemiBold" Text="{Binding Path=Id}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+
+            <GroupBox Grid.Column="1"
+                      Margin="2,0"
+                      Header="Triggers">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ListView Grid.Row="0"
+                              Width="230"
+                              ItemsSource="{Binding Path=Triggers,
+                                                    Mode=OneWay,
+                                                    UpdateSourceTrigger=PropertyChanged}"
+                              SelectedItem="{Binding Path=Trigger,
+                                                     Mode=TwoWay,
+                                                     UpdateSourceTrigger=PropertyChanged}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock FontWeight="SemiBold"
+                                           Text="{Binding Path=TriggerNameDisplay,
+                                                          Mode=OneWay,
+                                                          UpdateSourceTrigger=PropertyChanged}"
+                                           TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <GroupBox Grid.Row="1"
+                              Margin="0,4,0,0"
+                              Header="Details">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="0,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Text="ID" />
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="1"
+                                     Margin="0,0,0,2"
+                                     Text="{Binding Path=Trigger.Id,
+                                                    Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="0,0,5,0"
+                                       VerticalAlignment="Center"
+                                       Text="Name" />
+                            <TextBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     Margin="0,0,0,2"
+                                     Text="{Binding Path=Trigger.TriggerNameEdit,
+                                                    Mode=TwoWay,
+                                                    UpdateSourceTrigger=PropertyChanged}" />
+
+                            <CheckBox Grid.Row="2"
+                                      Grid.Column="1"
+                                      Margin="0,2"
+                                      Content="IsActive"
+                                      IsChecked="{Binding Path=Trigger.IsActive,
+                                                          Mode=TwoWay,
+                                                          UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox Grid.Row="3"
+                                      Grid.Column="1"
+                                      Margin="0,2"
+                                      Content="IsRun"
+                                      IsChecked="{Binding Path=Trigger.IsRun,
+                                                          Mode=TwoWay,
+                                                          UpdateSourceTrigger=PropertyChanged}" />
+                            <CheckBox Grid.Row="4"
+                                      Grid.Column="1"
+                                      Margin="0,2"
+                                      Content="IsAttackValid"
+                                      IsChecked="{Binding Path=Trigger.IsAttackValid,
+                                                          Mode=TwoWay,
+                                                          UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </GroupBox>
+
+            <Grid Grid.Column="2" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0"
+                      Margin="0"
+                      DataContext="{Binding Path=Trigger.Condition,
+                                            UpdateSourceTrigger=PropertyChanged}"
+                      Header="CONDITION">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="0,0,0,2">
+                           
+                        </Border>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1"
+                          Margin="0,4"
+                          Header="Procedures">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock VerticalAlignment="Center" Text="Procedure type: " />
+                            <ComboBox Grid.Column="1"
+                                      ItemsSource="{Binding Source={StaticResource TypeValues}}"
+                                      SelectedItem="{Binding Path=Procedure.Type,
+                                                             UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+
+
+                        <ListView Grid.Row="1"
+                                  ItemsSource="{Binding Path=Procedures,
+                                                        Mode=OneWay,
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding Path=Procedure,
+                                                         Mode=TwoWay,
+                                                         UpdateSourceTrigger=PropertyChanged}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   Text="{Binding Path=Parameters.Display,
+                                                                  Mode=OneWay,
+                                                                  UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   Text=" :: " />
+                                        <TextBlock VerticalAlignment="Center"
+                                                   FontWeight="SemiBold"
+                                                   Text="{Binding Path=TargetType,
+                                                                  Mode=OneWay,
+                                                                  UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="2"
+                          Margin="0,4"
+                          Header="Procedure target">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Margin="0,0,2,0"
+                                   VerticalAlignment="Center"
+                                   Text="Target: " />
+
+                        <ComboBox Grid.Row="0"
+                                  Grid.Column="1"
+                                  ItemsSource="{Binding Source={StaticResource TargetTypeValues}}"
+                                  SelectedItem="{Binding Path=Procedure.TargetType,
+                                                         UpdateSourceTrigger=PropertyChanged}" />
+
+                        <GroupBox Grid.Row="1"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2"
+                                  Margin="0,8,0,0"
+                                  DataContext="{Binding Path=Procedure.TargetParameters}"
+                                  Header="Target parameters"
+                                  Visibility="{Binding RelativeSource={RelativeSource FindAncestor,
+                                                                                      AncestorType={x:Type Window}},
+                                                       Path=DataContext.IsTargetParameterVisible,
+                                                       Mode=OneWay,
+                                                       UpdateSourceTrigger=PropertyChanged}">
+
+                            <GroupBox.Resources>
+                                <DataTemplate DataType="{x:Type tparams:ClassComboParameters}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="0,0,2,0"
+                                                   VerticalAlignment="Center"
+                                                   Text="Target: " />
+                                        <TextBox Grid.Column="1" Text="{Binding Path=ComboState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    </Grid>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type params:DefaultParameters}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Margin="0,0,2,0"
+                                                   VerticalAlignment="Center"
+                                                   Text="No parameters" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </GroupBox.Resources>
+                            <ContentPresenter Content="{Binding}" />
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Grid.Row="3"
+                          Margin="0"
+                          DataContext="{Binding Path=Procedure.Parameters,
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                          Header="Procedure parameters">
+
+                    <ContentControl Content="{Binding}" />
+                </GroupBox>
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+</ma:MetroWindow>

@@ -53,7 +53,7 @@
             #endregion
 
             if (fileType == FileType.Client)
-                _name = reader.ReadBytes(128).Clear(128);
+                _name = reader.ReadBytes(128).Clear(128, Encoding.Unicode);
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)

@@ -1,0 +1,721 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:params="clr-namespace:ProjectAegis.AI.Models.Parameters">
+    <DataTemplate DataType="{x:Type params:ExecTriggerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TriggerId: " />
+            <TextBox Grid.Column="1" Text="{Binding Path=TriggerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:AttackParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="AttackStategy: " />
+            <TextBox Grid.Column="1" Text="{Binding Path=AttackStategy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:SkillParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="SkillId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=SkillId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="SkillLevel: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=SkillLevel,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:ActiveSpawnerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="ControlId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=ControlId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="IsActiveSpawner: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=IsActiveSpawner,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:AddCommonDataParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Key: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=Key,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="Value: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=Value,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:BeTauntedParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:ChangePathParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="WorldTag: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=WorldTag,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="GlobalPathId: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=GlobalPathId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="PathType: " />
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=PathType,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="SpeedFlag: " />
+            <TextBox Grid.Row="3"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=SpeedFlag,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:CreateTimerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TimerId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=TimerId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="Interval: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=Interval,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="Count: " />
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=Count,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:DefaultParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:EnableTriggerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TriggerId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=TriggerId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:FadeAggroParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:FadeTargetParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:FleeParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:BreakParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:PlayActionParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="ActionName: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=ActionName,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="PlayTimes: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=PlayTimes,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="ActionLastTime: " />
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=ActionLastTime,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Margin="0,1"
+                           VerticalAlignment="Center"
+                           Text="IntervalTime: " />
+            <TextBox Grid.Row="3"
+                         Grid.Column="1"
+                         Margin="0,1"
+                         Text="{Binding Path=IntervalTime,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:RemoveTimerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TimerId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=TimerId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:RemoveTriggerParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TriggerId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=TriggerId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:ResetAggroParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="No parameters" />
+
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:ReviseHistoryParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Key: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=Key,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Value: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Text="{Binding Path=Value,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:SayParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Message: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=MessageView,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="MessageSize: " />
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         IsEnabled="False"
+                         IsReadOnly="True"
+                         Text="{Binding Path=MessageSize,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:SetCommonDataParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Key: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=Key,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Value: " />
+
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Text="{Binding Path=Value,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="IsValue: " />
+
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Text="{Binding Path=IsValue,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:SetHistoryParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Key: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=Key,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Value: " />
+
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Text="{Binding Path=Value,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Flag: " />
+
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Text="{Binding Path=Flag,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type params:SummonMonsterParameters}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="MobId: " />
+            <TextBox Grid.Row="0"
+                         Grid.Column="1"
+                         Text="{Binding Path=MobId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="Count: " />
+
+            <TextBox Grid.Row="1"
+                         Grid.Column="1"
+                         Text="{Binding Path=Count,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="TargetDistance: " />
+
+            <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Text="{Binding Path=TargetDistance,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="RemainTime: " />
+
+            <TextBox Grid.Row="3"
+                         Grid.Column="1"
+                         Text="{Binding Path=RemainTime,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="DieWithWho: " />
+
+            <TextBox Grid.Row="4"
+                         Grid.Column="1"
+                         Text="{Binding Path=DieWithWho,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock Grid.Row="5"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Text="PathId: " />
+
+            <TextBox Grid.Row="5"
+                         Grid.Column="1"
+                         Text="{Binding Path=PathId,
+                                        Mode=TwoWay,
+                                        UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

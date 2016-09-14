@@ -66,14 +66,14 @@
 
         #region Byte
 
-        public static byte[] Clear(this byte[] source, int lenght)
+        public static byte[] Clear(this byte[] source, int lenght, Encoding encoding)
         {
-            var stringRepresentaion = Encoding.Unicode.GetString(source);
+            var stringRepresentaion = encoding.GetString(source);
             var clearPath = stringRepresentaion.Substring(0, stringRepresentaion.IndexOf("\0", StringComparison.CurrentCulture));
 
             var clearBytes = new byte[lenght];
 
-            Array.Copy(Encoding.Unicode.GetBytes(clearPath), clearBytes, Encoding.Unicode.GetBytes(clearPath).Length);
+            Array.Copy(encoding.GetBytes(clearPath), clearBytes, encoding.GetBytes(clearPath).Length);
 
             return clearBytes;
         }

@@ -219,7 +219,7 @@
             if (fileType == FileType.Client)
             {
                 _description = reader.ReadBytes(1024);
-                _name = reader.ReadBytes(64).Clear(64);
+                _name = reader.ReadBytes(64).Clear(64, Encoding.Unicode);
             }
 
             if (version >= 144)

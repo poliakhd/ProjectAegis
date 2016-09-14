@@ -59,7 +59,7 @@
 
             if (fileType == FileType.Client)
             {
-                _name = reader.ReadBytes(128).Clear(128);
+                _name = reader.ReadBytes(128).Clear(128, Encoding.Unicode);
 
                 SubCategoriesCount = reader.ReadInt32();
             }
