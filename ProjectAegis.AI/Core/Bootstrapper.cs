@@ -1,14 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
+using System.Collections.Generic;
+
 using Caliburn.Micro;
+
 using ProjectAegis.AI.ViewModels;
 
 namespace ProjectAegis.AI.Core
 {
     public class Bootstrapper : BootstrapperBase
     {
+        #region Private Members
+        
         private readonly SimpleContainer _container = new SimpleContainer();
+
+        #endregion
 
         public Bootstrapper()
         {

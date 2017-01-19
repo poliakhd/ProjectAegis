@@ -15,7 +15,6 @@
 
     public sealed class MainWindowViewModel : Screen
     {
-
         #region Private members
 
         private Policy _aiPolicy;
@@ -86,7 +85,6 @@
             set
             {
                 _controller.Triggers = value;
-
                 NotifyOfPropertyChange();
             }
         }
@@ -96,7 +94,6 @@
             set
             {
                 _aiPolicy.Controllers = value;
-
                 NotifyOfPropertyChange();
             }
         }
@@ -106,7 +103,6 @@
             set
             {
                 _trigger.Procedures = value;
-
                 NotifyOfPropertyChange();
             }
         }
@@ -128,10 +124,9 @@
         {
             Trigger = new Trigger();
             Procedure = new Procedure();
-            Controller = new Controller();
-            
+            Controller = new Controller();        
 
-            using (var reader = new BinaryReader(new FileStream(@"I:\data\aipolicy.data", FileMode.Open, FileAccess.Read)))
+            using (var reader = new BinaryReader(new FileStream(@"I:\Projects\data\aipolicy.data", FileMode.Open, FileAccess.Read)))
             {
                 _aiPolicy = reader.ReadModel<Policy>();
             }
