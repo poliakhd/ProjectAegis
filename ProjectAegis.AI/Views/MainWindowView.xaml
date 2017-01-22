@@ -9,6 +9,7 @@
                 xmlns:system="clr-namespace:System;assembly=mscorlib"
                 xmlns:tparams="clr-namespace:ProjectAegis.AI.Models.TargetParameters"
                 xmlns:types="clr-namespace:ProjectAegis.AI.Models.Types"
+                xmlns:cal="http://www.caliburnproject.org"
                 x:Name="Window"
                 Title="aieditor community edition"
                 Width="1100"
@@ -117,7 +118,7 @@
             </Grid.ColumnDefinitions>
 
             <GroupBox Grid.Column="0"
-                      Margin="2,0"
+                      Margin="2,0" 
                       Header="Controllers">
                 <ListView ItemsSource="{Binding Path=Controllers,
                                                 Mode=OneWay,
@@ -127,12 +128,18 @@
                                                   UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding Path=Controller,
                                                  Mode=TwoWay,
-                                                 UpdateSourceTrigger=PropertyChanged}">
+                                                 UpdateSourceTrigger=PropertyChanged}"
+                           Style="{DynamicResource VirtualisedMetroListView}">
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type local:Controller}">
                             <TextBlock FontWeight="SemiBold" Text="{Binding Path=Id}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem cal:Message.Attach="[Event Click] = [Action Click()]" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
                 </ListView>
             </GroupBox>
 
@@ -255,7 +262,7 @@
                         <Border Grid.Row="0"
                             BorderBrush="Black"
                             BorderThickness="0,0,0,2">
-                           
+                            <TextBlock Text="{Binding Path=TypeDisplay}"></TextBlock>
                         </Border>
                     </Grid>
                 </GroupBox>
@@ -388,8 +395,6 @@
                     <ContentControl Content="{Binding}" />
                 </GroupBox>
             </Grid>
-
-
         </Grid>
     </Grid>
 </ma:MetroWindow>

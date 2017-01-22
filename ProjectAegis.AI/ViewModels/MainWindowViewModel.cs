@@ -1,4 +1,11 @@
-﻿namespace ProjectAegis.AI.ViewModels
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using AlphaChiTech.Virtualization;
+using ProjectAegis.Virtualization;
+using ProjectAegis.Virtualization.Interfaces;
+
+namespace ProjectAegis.AI.ViewModels
 {
     using System.IO;
     using System.Windows;
@@ -13,6 +20,48 @@
     using Trigger = Models.Trigger;
 
 
+    public class ControllersProvider : IPagedSourceProvider<Controller>
+    {
+        #region Private Members
+
+        private readonly BindableCollection<Controller> _controllers;
+
+        #endregion
+
+        public ControllersProvider(BindableCollection<Controller> controllers)
+        {
+            _controllers = controllers;
+        }
+
+        #region Implementation of IBaseSourceProvider
+
+        public void OnReset(int count)
+        {
+            
+        }
+
+        #endregion
+
+        #region Implementation of IPagedSourceProvider<Controller>
+
+        public PagedSourceItemsPacket<Controller> GetItemsAt(int pageoffset, int count, bool usePlaceholder)
+        {
+            return new PagedSourceItemsPacket<Controller>()
+            {
+                LoadedAt = DateTime.Now,
+                Items = (from items in _controllers select items).Skip(pageoffset).Take(count)
+            };
+        }
+
+        public int IndexOf(Controller item)
+        {
+            return _controllers.IndexOf(item);
+        }
+        public int Count => _controllers.Count;
+
+        #endregion
+    }
+
     public sealed class MainWindowViewModel : Screen
     {
         #region Private members
@@ -22,6 +71,8 @@
         private Trigger _trigger;
         private Procedure _procedure;
         private Controller _controller;
+
+        private VirtualizingObservableCollection<Controller> _controllers;
 
         private bool _isOpenFlyout;
         private int _controllerIndex;
@@ -79,21 +130,13 @@
             }
         }
 
+        public VirtualizingObservableCollection<Controller> Controllers => _controllers;
         public BindableCollection<Trigger> Triggers
         {
             get { return _controller.Triggers; }
             set
             {
                 _controller.Triggers = value;
-                NotifyOfPropertyChange();
-            }
-        }
-        public BindableCollection<Controller> Controllers
-        {
-            get { return _aiPolicy.Controllers; }
-            set
-            {
-                _aiPolicy.Controllers = value;
                 NotifyOfPropertyChange();
             }
         }
@@ -117,7 +160,6 @@
             }
         }
 
-
         public Visibility IsTargetParameterVisible => Procedure.TargetParameters is ClassComboParameters ? Visibility.Visible : Visibility.Collapsed;
 
         public MainWindowViewModel()
@@ -130,6 +172,8 @@
             {
                 _aiPolicy = reader.ReadModel<Policy>();
             }
+
+            _controllers = new VirtualizingObservableCollection<Controller>(new PaginationManager<Controller>(new ControllersProvider(_aiPolicy.Controllers)));
 
             NotifyOfPropertyChange(nameof(Controllers));
         }
@@ -169,9 +213,14 @@
             //}
         }
 
-        private void Click()
+        public void Click()
         {
-            IsOpenFlyout = !IsOpenFlyout;
+            var controller = new Controller();
+
+            _aiPolicy.Controllers.Add(controller);
+            _controllers.Add(controller);
+
+            NotifyOfPropertyChange(nameof(Controllers));
         }
     }
 }

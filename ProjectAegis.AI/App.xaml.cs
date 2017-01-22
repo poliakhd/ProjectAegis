@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using AlphaChiTech.Virtualization;
 
 namespace ProjectAegis.AI
 {
@@ -13,5 +10,18 @@ namespace ProjectAegis.AI
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            if (!VirtualizationManager.IsInitialized)
+            {
+                VirtualizationManager.Instance.UIThreadExcecuteAction =
+                    (a) => Dispatcher.Invoke(a);
+                new DispatcherTimer(
+                    TimeSpan.FromSeconds(1),
+                    DispatcherPriority.Background,
+                    (s, a) => VirtualizationManager.Instance.ProcessActions(),
+                    this.Dispatcher).Start();
+            }
+        }
     }
 }

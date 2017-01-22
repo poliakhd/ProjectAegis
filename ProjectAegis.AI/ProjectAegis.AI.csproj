@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlphaChiTech.Virtualization, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VirtualizingObservableCollection.1.2.0\lib\AlphaChiTech.Virtualization.dll</HintPath>
+    </Reference>
     <Reference Include="Caliburn.Micro, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.0.1\lib\net45\Caliburn.Micro.dll</HintPath>
       <Private>True</Private>
@@ -175,6 +178,10 @@
     <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.csproj">
       <Project>{e14d869d-7c8f-42da-8662-8f1382da593c}</Project>
       <Name>ProjectAegis.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.csproj">
+      <Project>{dfd7266b-4801-407c-8de7-9f0f2f8fb050}</Project>
+      <Name>ProjectAegis.Virtualization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
