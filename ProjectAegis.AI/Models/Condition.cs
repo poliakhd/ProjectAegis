@@ -43,7 +43,6 @@ namespace ProjectAegis.AI.Models
                 SubNodeR = reader.ReadInt32();
             }
         }
-
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(Id);

@@ -13,6 +13,7 @@
 
         private int _messageSize;
         private byte[] _message;
+        private int _mask;
 
         #endregion
 
@@ -32,6 +33,15 @@
             set
             {
                 _message = value;
+                NotifyOfPropertyChange(nameof(Display));
+            }
+        }
+        public int Mask
+        {
+            get { return _mask; }
+            set
+            {
+                _mask = value;
                 NotifyOfPropertyChange(nameof(Display));
             }
         }
@@ -57,12 +67,17 @@
         {
             MessageSize = reader.ReadInt32();
             Message = reader.ReadBytes(MessageSize);
-        }
 
+            if (version > 10)
+                Mask = reader.ReadInt32();
+        }
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write(MessageSize);
             writer.Write(Message);
+
+            if (version > 10)
+                writer.Write(Mask);
         }
 
         #endregion

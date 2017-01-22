@@ -154,19 +154,19 @@
                 Controller = new Controller();
             }
         }
-        private void SaveFile()
+        public void SaveFile()
         {
             var dialog = new OpenFileDialog { Filter = ".data files|*.data|All files |*.*" };
 
-            bool? result = dialog.ShowDialog();
+            //bool? result = dialog.ShowDialog();
 
-            if (result == true)
-            {
-                using (var writer = new BinaryWriter(new FileStream(@"I:\data\test.data", FileMode.Create, FileAccess.Write)))
+            //if (result == true)
+            //{
+                using (var writer = new BinaryWriter(new FileStream(@"I:\Projects\data\aipolicy_s.data", FileMode.Create, FileAccess.Write)))
                 {
                     writer.WriteModel(_aiPolicy);
                 }
-            }
+            //}
         }
 
         private void Click()

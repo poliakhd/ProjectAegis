@@ -37,15 +37,6 @@
                 NotifyOfPropertyChange(nameof(Display));
             }
         }
-        public int TargetDistance
-        {
-            get { return _targetDistance; }
-            set
-            {
-                _targetDistance = value;
-                NotifyOfPropertyChange(nameof(Display));
-            }
-        }
         public int RemainTime
         {
             get { return _remainTime; }
@@ -73,6 +64,15 @@
                 NotifyOfPropertyChange(nameof(Display));
             }
         }
+        public int TargetDistance
+        {
+            get { return _targetDistance; }
+            set
+            {
+                _targetDistance = value;
+                NotifyOfPropertyChange(nameof(Display));
+            }
+        }
 
         public string Display => $"SummonMonster({MobId}, {Count}, {TargetDistance}, {RemainTime}, {DieWithWho}, {PathId});";
 
@@ -82,10 +82,10 @@
         {
             MobId = reader.ReadInt32();
             Count = reader.ReadInt32();
-            TargetDistance = reader.ReadInt32();
-            RemainTime = reader.ReadInt32();
             DieWithWho = reader.ReadInt32();
+            RemainTime = reader.ReadInt32();
             PathId = reader.ReadInt32();
+            TargetDistance = reader.ReadInt32();
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)

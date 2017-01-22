@@ -23,6 +23,19 @@
         ChangePath = 18,
         PlayAction = 19,
         ReviseHistory = 20,
-        SetHistory = 21
+        SetHistory = 21,
+        DeliverFactionPvpPoints = 22,
+        CalcVar = 23,
+        SummonMonster2 = 24,
+        ChangePath2 = 25,
+        Skill2 = 26,
+        ActiveSpawner2 = 27,
+        DeliverTask = 28,
+        SummonMine = 29,
+        SummonNpc = 30,
+        DeliverRandomTaskInRegion = 31,
+        DeliverRandomTaskInHateList = 32,
+        ClearTowerTaskInRegion = 33,
+        Num = 34,
     }
 }

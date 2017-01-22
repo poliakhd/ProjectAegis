@@ -50,10 +50,10 @@ namespace ProjectAegis.AI.Models
             IsAttackValid = reader.ReadBoolean();
             TriggerName = reader.ReadBytes(128).Clear(128, Encoding.GetEncoding("GBK"));
             Condition = reader.ReadModel<Condition>();
-            ProcedureCount = reader.ReadInt32();
 
+            ProcedureCount = reader.ReadInt32();
             for (var i = 0; i < ProcedureCount; i++)
-                Procedures.Add(reader.ReadModel<Procedure>());
+                Procedures.Add(reader.ReadModel<Procedure>(Version));
         }
 
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
@@ -68,7 +68,7 @@ namespace ProjectAegis.AI.Models
             writer.Write(ProcedureCount);
 
             foreach (var procedure in Procedures)
-                writer.WriteModel(procedure);
+                writer.WriteModel(procedure, Version);
         }
 
         #endregion

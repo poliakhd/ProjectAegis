@@ -54,7 +54,7 @@
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)
         {
             Type = (ParameterType)reader.ReadInt32();
-            Parameters = reader.ReadParameters(Type);
+            Parameters = reader.ReadParameters(Type, version);
             TargetType = (TargetParameterType)reader.ReadInt32();
 
             if (TargetType == TargetParameterType.ClassCombo)
@@ -64,7 +64,7 @@
         public void WriteModel(BinaryWriter writer, int version = 0, params object[] parameters)
         {
             writer.Write((int)Type);
-            writer.WriteParameters(Parameters, Type);
+            writer.WriteParameters(Parameters, Type, version);
             writer.Write((int)TargetType);
 
             if (TargetType == TargetParameterType.ClassCombo)

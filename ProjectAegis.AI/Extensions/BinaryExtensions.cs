@@ -10,7 +10,7 @@
 
     public static class BinaryExtensions
     {
-        public static IParameter ReadParameters(this BinaryReader reader, ParameterType parameterType)
+        public static IParameter ReadParameters(this BinaryReader reader, ParameterType parameterType, int version = 0)
         {
             switch (parameterType)
             {
@@ -19,7 +19,7 @@
                 case ParameterType.Skill:
                     return reader.ReadModel<SkillParameters>();
                 case ParameterType.Say:
-                    return reader.ReadModel<SayParameters>();
+                    return reader.ReadModel<SayParameters>(version);
                 case ParameterType.ResetAggro:
                     return reader.ReadModel<ResetAggroParameters>();
                 case ParameterType.ExecTrigger:
@@ -58,6 +58,30 @@
                     return reader.ReadModel<ReviseHistoryParameters>();
                 case ParameterType.SetHistory:
                     return reader.ReadModel<SetHistoryParameters>();
+                case ParameterType.DeliverFactionPvpPoints:
+                    return reader.ReadModel<DeliverFactionPvpPointsParameters>();
+                case ParameterType.CalcVar:
+                    return reader.ReadModel<CalcVarParameters>();
+                case ParameterType.SummonMonster2:
+                    return reader.ReadModel<SummonMonster2Parameters>();
+                case ParameterType.ChangePath2:
+                    return reader.ReadModel<ChangePath2Parameters>();
+                case ParameterType.Skill2:
+                    return reader.ReadModel<Skill2Parameters>();
+                case ParameterType.ActiveSpawner2:
+                    return reader.ReadModel<ActiveSpawner2Parameters>();
+                case ParameterType.DeliverTask:
+                    return reader.ReadModel<DeliverTaskParameters>();
+                case ParameterType.SummonMine:
+                    return reader.ReadModel<SummonMineParameters>();
+                case ParameterType.SummonNpc:
+                    return reader.ReadModel<SummonNpcParameters>();
+                case ParameterType.DeliverRandomTaskInRegion:
+                    return reader.ReadModel<DeliverRandomTaskInRegionParameters>();
+                case ParameterType.DeliverRandomTaskInHateList:
+                    return reader.ReadModel<DeliverRandomTaskInHateListParameters>();
+                case ParameterType.ClearTowerTaskInRegion:
+                    return reader.ReadModel<ClearTowerTaskInRegionParameters>();
                 default:
                     return new DefaultParameters();
             }
@@ -73,7 +97,7 @@
             }
         }
 
-        public static void WriteParameters(this BinaryWriter writer, IParameter parameter, ParameterType parameterType)
+        public static void WriteParameters(this BinaryWriter writer, IParameter parameter, ParameterType parameterType, int version = 0)
         {
             switch (parameterType)
             {
@@ -84,7 +108,7 @@
                     writer.WriteModel(parameter as SkillParameters);
                     break;
                 case ParameterType.Say:
-                    writer.WriteModel(parameter as SayParameters);
+                    writer.WriteModel(parameter as SayParameters, version);
                     break;
                 case ParameterType.ResetAggro:
                     writer.WriteModel(parameter as ResetAggroParameters);
@@ -142,6 +166,42 @@
                     break;
                 case ParameterType.SetHistory:
                     writer.WriteModel(parameter as SetHistoryParameters);
+                    break;
+                case ParameterType.DeliverFactionPvpPoints:
+                    writer.WriteModel(parameter as DeliverFactionPvpPointsParameters);
+                    break;
+                case ParameterType.CalcVar:
+                    writer.WriteModel(parameter as CalcVarParameters);
+                    break;
+                case ParameterType.SummonMonster2:
+                    writer.WriteModel(parameter as SummonMonster2Parameters);
+                    break;
+                case ParameterType.ChangePath2:
+                    writer.WriteModel(parameter as ChangePath2Parameters);
+                    break;
+                case ParameterType.Skill2:
+                    writer.WriteModel(parameter as Skill2Parameters);
+                    break;
+                case ParameterType.ActiveSpawner2:
+                    writer.WriteModel(parameter as ActiveSpawner2Parameters);
+                    break;
+                case ParameterType.DeliverTask:
+                    writer.WriteModel(parameter as DeliverTaskParameters);
+                    break;
+                case ParameterType.SummonMine:
+                    writer.WriteModel(parameter as SummonMineParameters);
+                    break;
+                case ParameterType.SummonNpc:
+                    writer.WriteModel(parameter as SummonNpcParameters);
+                    break;
+                case ParameterType.DeliverRandomTaskInRegion:
+                    writer.WriteModel(parameter as DeliverRandomTaskInRegionParameters);
+                    break;
+                case ParameterType.DeliverRandomTaskInHateList:
+                    writer.WriteModel(parameter as DeliverRandomTaskInHateListParameters);
+                    break;
+                case ParameterType.ClearTowerTaskInRegion:
+                    writer.WriteModel(parameter as ClearTowerTaskInRegionParameters);
                     break;
             }
         }
