@@ -35,7 +35,6 @@
         SummonNpc = 30,
         DeliverRandomTaskInRegion = 31,
         DeliverRandomTaskInHateList = 32,
-        ClearTowerTaskInRegion = 33,
-        Num = 34,
+        ClearTowerTaskInRegion = 33
     }
 }
