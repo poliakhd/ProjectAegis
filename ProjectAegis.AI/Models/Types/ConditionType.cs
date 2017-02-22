@@ -4,36 +4,42 @@
 
     public enum ConditionType
     {
-        IsTimerTicking = 0,
-        IsHpLess = 1,
-        IsCombatStarted = 2,
-        Randomize = 3,
-        IsTargetDead = 4,
-        IsDead = 8,
-        PublicCounter = 16,
-        Value = 17,
-        IsEvent = 18,
-        Unk = -1,
-
+        TimeCome = 0,
+        HpLess = 1,
+        StartAttack = 2,
+        Random = 3,
+        KillPlayer = 4,
         [Description("!")]
         Not = 5,
         [Description("||")]
         Or = 6,
         [Description("&&")]
         And = 7,
+        Died = 8,
         [Description("+")]
         Plus = 9,
         [Description("-")]
         Minus = 10,
-        [Description("==")]
-        Equals = 11,
+        [Description("*")]
+        Multiply = 11,
+        [Description("/")]
+        Divide = 12,
         [Description(">")]
-        Gt = 12,
-        [Description(">=")]
-        GtOrEquals = 13,
+        Great = 13,
         [Description("<")]
-        Lt = 14,
-        [Description("<=")]
-        LtOrEquals = 15,
+        Less = 14,
+        [Description("==")]
+        Equ = 15,
+        Var = 16,
+        Constant = 17,
+        BeHurt = 18,
+        ReachEnd = 19,
+        AtHistoryStage = 20,
+        HistoryValue = 21,
+        StopFight = 22,
+        LocalVar = 23,
+        ReachEnd2 = 24,
+        HasFilter = 25,
+        RoomIndex = 26
     }
 }

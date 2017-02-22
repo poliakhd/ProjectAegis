@@ -54,7 +54,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
+        <!--<Grid Grid.Row="0"
               Grid.ColumnSpan="3"
               Margin="7,5,7,3">
             <Grid.ColumnDefinitions>
@@ -106,7 +106,7 @@
                     <TextBlock Margin="5,0,0,0" Text="Save as" />
                 </StackPanel>
             </Button>
-        </Grid>
+        </Grid>-->
 
         <Grid Grid.Row="1"
               Grid.ColumnSpan="3"
@@ -251,20 +251,9 @@
                       DataContext="{Binding Path=Trigger.Condition,
                                             UpdateSourceTrigger=PropertyChanged}"
                       Header="CONDITION">
+                    
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-
-                        <Border Grid.Row="0"
-                            BorderBrush="Black"
-                            BorderThickness="0,0,0,2">
-                            <TextBlock Text="{Binding Path=TypeDisplay}"></TextBlock>
-                        </Border>
-                    </Grid>
+                    <TextBlock Text="{Binding Path=Display}"></TextBlock>
                 </GroupBox>
 
                 <GroupBox Grid.Row="1"

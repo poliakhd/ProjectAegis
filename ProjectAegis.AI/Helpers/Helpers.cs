@@ -30,44 +30,60 @@
         {
             switch (type)
             {
-                case ConditionType.IsTimerTicking:
+                case ConditionType.TimeCome:
                     return $"{type}({BitConverter.ToInt32(args, 0)})";
-                case ConditionType.PublicCounter:
+                case ConditionType.Var:
                     return $"{type}({BitConverter.ToInt32(args, 0)})";
-                case ConditionType.Value:
+                case ConditionType.Constant:
                     return $"{type}({BitConverter.ToInt32(args, 0)})";
-                case ConditionType.IsHpLess:
+                case ConditionType.HpLess:
                     return $"{type}({BitConverter.ToSingle(args, 0).ToString("F2")})";
-                case ConditionType.Randomize:
+                case ConditionType.Random:
                     return $"{type}({BitConverter.ToSingle(args, 0).ToString("F2")})";
-                case ConditionType.IsCombatStarted:
+                case ConditionType.StartAttack:
                     return $"{type}()";
-                case ConditionType.IsTargetDead:
+                case ConditionType.KillPlayer:
                     return $"{type}()";
                 case ConditionType.Or:
                     return " || ";
                 case ConditionType.And:
                     return " && ";
-                case ConditionType.IsDead:
+                case ConditionType.Died:
                     return $"{type}()";
                 case ConditionType.Plus:
                     return " + ";
                 case ConditionType.Minus:
                     return " - ";
-                case ConditionType.Equals:
+                case ConditionType.Equ:
                     return " == ";
-                case ConditionType.Gt:
+                case ConditionType.Great:
                     return " > ";
-                case ConditionType.GtOrEquals:
-                    return " >= ";
-                case ConditionType.Lt:
-                    return " < ";
-                case ConditionType.LtOrEquals:
+                case ConditionType.Less:
                     return " > ";
-                case ConditionType.IsEvent:
+                case ConditionType.Multiply:
+                    return " * ";
+                case ConditionType.Divide:
+                    return " / ";
+                case ConditionType.BeHurt:
                     return $"{type}()";
                 case ConditionType.Not:
                     return "!";
+                case ConditionType.ReachEnd:
+                    return $"{type}({BitConverter.ToInt32(args, 0)})";
+                case ConditionType.AtHistoryStage:
+                    return $"{type}({BitConverter.ToInt32(args, 0)})";
+                case ConditionType.HistoryValue:
+                    return $"{type}({BitConverter.ToInt32(args, 0)})";
+                case ConditionType.StopFight:
+                    return $"{type}()";
+                case ConditionType.LocalVar:
+                    return $"{type}({BitConverter.ToInt32(args, 0)})";
+                case ConditionType.ReachEnd2:
+                    return $"{type}({BitConverter.ToInt32(args, 0)}, {BitConverter.ToInt32(args, 3)})";
+                case ConditionType.HasFilter:
+                    return $"{type}({BitConverter.ToInt32(args, 0)})";
+                case ConditionType.RoomIndex:
+                    return $"{type}()";
                 default:
                     return "?";
             }

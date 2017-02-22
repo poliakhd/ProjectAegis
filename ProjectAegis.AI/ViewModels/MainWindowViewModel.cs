@@ -164,6 +164,8 @@ namespace ProjectAegis.AI.ViewModels
 
         public MainWindowViewModel()
         {
+            base.DisplayName = "projectaegis.ai";
+
             Trigger = new Trigger();
             Procedure = new Procedure();
             Controller = new Controller();        

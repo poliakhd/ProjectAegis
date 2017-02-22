@@ -20,6 +20,20 @@ namespace ProjectAegis.AI.Models
         public Condition ConditionRight { get; set; }
         public int SubNodeR { get; set; }
 
+        public string Display
+        {
+            get
+            {
+                if (ConditionLeft == null && ConditionRight == null)
+                    return $"{TypeDisplay}";
+
+                if (ConditionLeft == null)
+                    return $"{Type}({ConditionRight?.Display})";
+
+                return $"({ConditionLeft?.Display}{TypeDisplay}{ConditionRight?.Display})";
+            }
+        }
+
         #region Implementation of IBinaryModel
 
         public void ReadModel(BinaryReader reader, int version = 0, params object[] parameters)

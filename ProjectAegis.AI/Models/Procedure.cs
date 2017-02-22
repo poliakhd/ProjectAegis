@@ -47,7 +47,7 @@
             }
         }
 
-        public string Show => $"{Parameters} :: {TargetType}";
+        public string Show => $"{Parameters} -> {TargetType}";
 
         #region Implementation of IBinaryModel
 
