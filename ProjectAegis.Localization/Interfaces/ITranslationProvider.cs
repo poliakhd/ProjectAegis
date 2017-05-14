@@ -1,8 +1,8 @@
-﻿namespace ProjectAegis.Localization.Interfaces
+﻿namespace ProjectAegis.Localization.Library.Interfaces
 {
-    using System.Globalization;
     using System.Collections.Generic;
-    
+    using System.Globalization;
+
     public interface ITranslationProvider
     {
         object Translate(string key);

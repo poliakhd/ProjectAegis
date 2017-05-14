@@ -1,11 +1,10 @@
-﻿namespace ProjectAegis.Localization.Managers
+﻿namespace ProjectAegis.Localization.Library.Managers
 {
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Threading;
-    using System.Globalization;
-    using System.Collections.Generic;
-
     using Interfaces;
 
     public class TranslationManager

@@ -1,9 +1,8 @@
-﻿namespace ProjectAegis.Localization
+﻿namespace ProjectAegis.Localization.Library
 {
     using System;
     using System.ComponentModel;
     using System.Windows;
-
     using Core;
     using Managers;
 

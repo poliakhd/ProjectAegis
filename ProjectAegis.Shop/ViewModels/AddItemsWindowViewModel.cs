@@ -7,17 +7,15 @@
     using System.Collections;
 
     using Caliburn.Micro;
-
+    using Localization.Library.Managers;
     using Microsoft.Win32;
 
     using Models;
     using Models.Messages;
 
     using Virtualization;
-
-    using Localization.Managers;
-
-    using Shared.Extensions;
+    using Shared.Library.Extensions;
+    using Virtualization.Library;
 
     public sealed class AddItemsWindowViewModel : Screen, IHandle<BindableCollection<Category>>
     {

@@ -1,10 +1,9 @@
-﻿namespace ProjectAegis.Virtualization
+﻿namespace ProjectAegis.Virtualization.Library
 {
-    using System.Threading;
-    using System.ComponentModel;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-
+    using System.ComponentModel;
+    using System.Threading;
     using Interfaces;
 
     /// <summary>

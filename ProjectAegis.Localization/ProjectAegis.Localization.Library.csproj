@@ -7,8 +7,8 @@
     <ProjectGuid>{13355BE4-8DEC-4B9D-BC6E-8E948976E0EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProjectAegis.Localization</RootNamespace>
-    <AssemblyName>ProjectAegis.Localization</AssemblyName>
+    <RootNamespace>ProjectAegis.Localization.Library</RootNamespace>
+    <AssemblyName>ProjectAegis.Localization.Library</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -10,17 +10,14 @@
     using System.Collections.Generic;
 
     using Caliburn.Micro;
-
+    using Localization.Library.Managers;
     using Microsoft.Win32;
 
     using Models;
     using Models.Base;
     using Models.Messages;
     using Providers.Interfaces;
-
-    using Shared.Extensions;
-
-    using Localization.Managers;
+    using Shared.Library.Extensions;
 
     public sealed class MainWindowViewModel : 
         Screen, IHandle<AddItemsMessage>

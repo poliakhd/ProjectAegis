@@ -7,7 +7,7 @@
         xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ProjectAegis.Shop.Models"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:localization="clr-namespace:ProjectAegis.Localization;assembly=ProjectAegis.Localization"
+        xmlns:localization="clr-namespace:ProjectAegis.Localization.Library;assembly=ProjectAegis.Localization.Library"
         mc:Ignorable="d"
         Title="AddItemsWindowView" Height="400" Width="600" ResizeMode="NoResize">
     <Grid>

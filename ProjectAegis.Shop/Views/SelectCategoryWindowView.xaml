@@ -5,7 +5,7 @@
                 xmlns:ma="http://metro.mahapps.com/winfx/xaml/controls"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:cal="http://www.caliburnproject.org"
-                xmlns:localization="clr-namespace:ProjectAegis.Localization;assembly=ProjectAegis.Localization"
+                xmlns:localization="clr-namespace:ProjectAegis.Localization.Library;assembly=ProjectAegis.Localization.Library"
                 Title="SelectCategoryWindowView"
                 Width="300"
                 Height="300"
