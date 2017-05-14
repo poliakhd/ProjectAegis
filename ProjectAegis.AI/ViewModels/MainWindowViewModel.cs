@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using AlphaChiTech.Virtualization;
-using ProjectAegis.Virtualization;
-using ProjectAegis.Virtualization.Interfaces;
 
 namespace ProjectAegis.AI.ViewModels
 {
@@ -16,7 +13,7 @@ namespace ProjectAegis.AI.ViewModels
 
     using Models;
     using Models.TargetParameters;
-    using Shared.Extensions;
+    using Shared.Library.Extensions;
     using Trigger = Models.Trigger;
 
 

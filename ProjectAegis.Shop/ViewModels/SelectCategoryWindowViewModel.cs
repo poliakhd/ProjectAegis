@@ -1,10 +1,8 @@
 ﻿namespace ProjectAegis.Shop.ViewModels
 {
     using Caliburn.Micro;
-
+    using Localization.Library.Managers;
     using Models;
-
-    using Localization.Managers;
 
     public class SelectCategoryWindowViewModel :
         Screen, IHandle<BindableCollection<Category>>

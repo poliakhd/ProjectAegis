@@ -1,4 +1,4 @@
-﻿namespace ProjectAegis.Localization
+﻿namespace ProjectAegis.Localization.Library
 {
     using System;
     using System.Windows.Data;

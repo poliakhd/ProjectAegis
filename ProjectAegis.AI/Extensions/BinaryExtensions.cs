@@ -6,7 +6,7 @@
     using Models.Parameters;
     using Models.TargetParameters;
     using Models.Types;
-    using Shared.Extensions;
+    using Shared.Library.Extensions;
 
     public static class BinaryExtensions
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Caliburn.Micro;
 using ProjectAegis.AI.Models.Interfaces;
 

@@ -10,9 +10,8 @@
     using Caliburn.Micro;
 
     using Base;
-
-    using Shared.Extensions;
-    using Shared.Interfaces;
+    using Shared.Library.Extensions;
+    using Shared.Library.Interfaces;
 
     public class Item : PropertyChangedBase, IBinaryModel
     {

@@ -1,11 +1,12 @@
 ﻿using System.IO;
 using ProjectAegis.AI.Helpers;
 using ProjectAegis.AI.Models.Types;
-using ProjectAegis.Shared.Extensions;
-using ProjectAegis.Shared.Interfaces;
 
 namespace ProjectAegis.AI.Models
 {
+    using Shared.Library.Extensions;
+    using Shared.Library.Interfaces;
+
     public class Condition : IBinaryModel
     {
         public int Id { get; set; }

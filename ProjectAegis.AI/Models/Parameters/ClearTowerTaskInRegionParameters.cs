@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Caliburn.Micro;
 using ProjectAegis.AI.Models.Interfaces;
-using ProjectAegis.Shared.Extensions;
 
 namespace ProjectAegis.AI.Models.Parameters
 {
+    using Shared.Library.Extensions;
+
     public class ClearTowerTaskInRegionParameters : PropertyChangedBase, IParameter
     {
         #region Private Members

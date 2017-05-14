@@ -1,13 +1,11 @@
-﻿namespace ProjectAegis.Shared.Extensions
+﻿namespace ProjectAegis.Shared.Library.Extensions
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Text;
-
     using Caliburn.Micro;
-
     using Interfaces;
 
     public static class Extensions

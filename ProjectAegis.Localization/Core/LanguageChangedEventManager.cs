@@ -1,8 +1,7 @@
-﻿namespace ProjectAegis.Localization.Core
+﻿namespace ProjectAegis.Localization.Library.Core
 {
     using System;
     using System.Windows;
-
     using Managers;
 
     public class LanguageChangedEventManager : WeakEventManager

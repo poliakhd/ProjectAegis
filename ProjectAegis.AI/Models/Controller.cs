@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using Caliburn.Micro;
-using ProjectAegis.Shared.Extensions;
-using ProjectAegis.Shared.Interfaces;
 
 namespace ProjectAegis.AI.Models
 {
+    using Shared.Library.Extensions;
+    using Shared.Library.Interfaces;
+
     public class Controller : IBinaryModel
     {
         public int Id { get; set; }

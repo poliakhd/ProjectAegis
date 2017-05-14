@@ -165,17 +165,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjectAegis.Localization\ProjectAegis.Localization.csproj">
+    <ProjectReference Include="..\ProjectAegis.Localization\ProjectAegis.Localization.Library.csproj">
       <Project>{13355be4-8dec-4b9d-bc6e-8e948976e0ef}</Project>
-      <Name>ProjectAegis.Localization</Name>
+      <Name>ProjectAegis.Localization.Library</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.csproj">
+    <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.Library.csproj">
       <Project>{e14d869d-7c8f-42da-8662-8f1382da593c}</Project>
-      <Name>ProjectAegis.Shared</Name>
+      <Name>ProjectAegis.Shared.Library</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.csproj">
+    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.Library.csproj">
       <Project>{DFD7266B-4801-407C-8DE7-9F0F2F8FB050}</Project>
-      <Name>ProjectAegis.Virtualization</Name>
+      <Name>ProjectAegis.Virtualization.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

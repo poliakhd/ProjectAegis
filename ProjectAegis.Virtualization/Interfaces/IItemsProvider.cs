@@ -1,4 +1,4 @@
-﻿namespace ProjectAegis.Virtualization.Interfaces
+﻿namespace ProjectAegis.Virtualization.Library.Interfaces
 {
     using System.Collections.Generic;
 

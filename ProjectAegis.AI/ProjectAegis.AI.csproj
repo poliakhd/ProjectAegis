@@ -175,11 +175,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.csproj">
+    <ProjectReference Include="..\ProjectAegis.Shared\ProjectAegis.Shared.Library.csproj">
       <Project>{e14d869d-7c8f-42da-8662-8f1382da593c}</Project>
       <Name>ProjectAegis.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.csproj">
+    <ProjectReference Include="..\ProjectAegis.Virtualization\ProjectAegis.Virtualization.Library.csproj">
       <Project>{dfd7266b-4801-407c-8de7-9f0f2f8fb050}</Project>
       <Name>ProjectAegis.Virtualization</Name>
     </ProjectReference>

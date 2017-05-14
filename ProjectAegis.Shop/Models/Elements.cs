@@ -6,10 +6,8 @@
     using System.Collections.Generic;
 
     using Caliburn.Micro;
-
-    using Shared.Interfaces;
-
-    using Virtualization.Interfaces;
+    using Shared.Library.Interfaces;
+    using Virtualization.Library.Interfaces;
 
     public class Element
     {

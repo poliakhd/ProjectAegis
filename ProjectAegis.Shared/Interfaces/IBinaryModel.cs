@@ -1,4 +1,4 @@
-﻿namespace ProjectAegis.Shared.Interfaces
+﻿namespace ProjectAegis.Shared.Library.Interfaces
 {
     using System.IO;
 

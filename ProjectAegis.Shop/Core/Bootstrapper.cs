@@ -9,10 +9,9 @@ namespace ProjectAegis.Shop.Core
     using System.Collections.Generic;
 
     using Caliburn.Micro;
-
+    using Localization.Library.Managers;
+    using Localization.Library.Providers;
     using ViewModels;
-    using Localization.Managers;
-    using Localization.Providers;
 
     public class Bootstrapper : BootstrapperBase
     {

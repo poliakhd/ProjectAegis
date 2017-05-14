@@ -2,11 +2,12 @@
 using System.IO;
 using System.Text;
 using Caliburn.Micro;
-using ProjectAegis.Shared.Extensions;
-using ProjectAegis.Shared.Interfaces;
 
 namespace ProjectAegis.AI.Models
 {
+    using Shared.Library.Extensions;
+    using Shared.Library.Interfaces;
+
     public class Trigger : PropertyChangedBase, IBinaryModel
     {
         public int Id { get; set; }
