@@ -21,7 +21,7 @@ Screenshots:
 
 ![alt text](https://i.ibb.co/kmRkZ20/2.png "Elements import window")
 
-## ShopEditor
+## AiEditor
 
 This editor intended for aipolicy.data file (work is on-hold, only file preview is available):
 
