@@ -20,3 +20,11 @@ Screenshots:
 ![alt text](https://i.ibb.co/bRsfqf8/1.png "Main Window")
 
 ![alt text](https://i.ibb.co/kmRkZ20/2.png "Elements import window")
+
+## ShopEditor
+
+This editor intended for aipolicy.data file (work is on-hold, only file preview is available):
+
+Screenshots:
+
+![alt text](https://i.ibb.co/sykn2sn/1.png "Main Window")
